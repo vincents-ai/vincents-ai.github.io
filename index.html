@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en-GB">
   <head>
@@ -5,79 +6,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>vincents.ai - Tooling for the agentic age</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    
     <style>
-      *, *::after, *::before { box-sizing: border-box; margin: 0; padding: 0; }
-body { margin: 0; font-family: system-ui, -apple-system, sans-serif; min-height: 100vh; background: #020617; color: #f8fafc; }
-.min-h-screen { min-height: 100vh; }
-.bg-slate-950 { background-color: #020617; }
-.text-white { color: #f8fafc; }
-.bg-gradient-to-r { background-image: linear-gradient(to right, var(--tw-gradient-from), var(--tw-gradient-to)); }
-.from-slate-900 { --tw-gradient-from: #0f172a; --tw-gradient-to: rgb(15 23 42 / 0); }
-.to-slate-950 { --tw-gradient-to: #020617; }
-.py-20 { padding-top: 5rem; padding-bottom: 5rem; }
-.px-4 { padding-left: 1rem; padding-right: 1rem; }
-.container { width: 100%; margin-left: auto; margin-right: auto; }
-@media (min-width: 640px) { .container { max-width: 640px; } }
-@media (min-width: 768px) { .container { max-width: 768px; } }
-@media (min-width: 1024px) { .container { max-width: 1024px; } }
-@media (min-width: 1280px) { .container { max-width: 1280px; } }
-.mx-auto { margin-left: auto; margin-right: auto; }
-.text-center { text-align: center; }
-.text-6xl { font-size: 3.75rem; line-height: 1; }
-.font-extrabold { font-weight: 800; }
-.bg-clip-text { -webkit-background-clip: text; background-clip: text; }
-.text-transparent { color: transparent; }
-.from-orange-400 { --tw-gradient-from: #fb923c; }
-.via-purple-500 { --tw-gradient-via: #a855f7; --tw-gradient-to: rgb(168 85 247 / 0); }
-.to-orange-400 { --tw-gradient-to: #fb923c; }
-.mt-4 { margin-top: 1rem; }
-.text-xl { font-size: 1.25rem; }
-.text-slate-400 { color: #94a3b8; }
-.py-16 { padding-top: 4rem; padding-bottom: 4rem; }
-.text-4xl { font-size: 2.25rem; line-height: 1; }
-.font-bold { font-weight: 700; }
-.mb-12 { margin-bottom: 3rem; }
-.grid { display: grid; }
-.grid-cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
-@media (min-width: 768px) { .md\\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-@media (min-width: 1024px) { .lg\\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
-.gap-6 { gap: 1.5rem; }
-.bg-slate-900 { background-color: #0f172a; }
-.rounded-xl { border-radius: 0.75rem; }
-.p-6 { padding: 1.5rem; }
-.border-t-4 { border-top-width: 4px; }
-@media (hover: hover) {
-  .project-card:hover { transform: translateY(-0.25rem); box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 8px 10px -6px rgba(0,0,0,0.1); }
-}
-.w-20 { width: 5rem; }
-.h-20 { height: 5rem; }
-.mb-4 { margin-bottom: 1rem; }
-.w-full { width: 100%; }
-.h-full { height: 100%; }
-.text-2xl { font-size: 1.5rem; }
-.mb-2 { margin-bottom: 0.5rem; }
-.text-sm { font-size: 0.875rem; }
-.font-semibold { font-weight: 600; }
-.tracking-wider { letter-spacing: 0.05em; }
-.uppercase { text-transform: uppercase; }
-.text-slate-300 { color: #cbd5e1; }
-.inline-block { display: inline-block; }
-.px-3 { padding-left: 0.75rem; padding-right: 0.75rem; }
-.py-1 { padding-top: 0.25rem; padding-bottom: 0.25rem; }
-.rounded-full { border-radius: 9999px; }
-.text-xs { font-size: 0.75rem; }
-.border { border-width: 1px; }
-.border-current { border-color: currentColor; }
-.border-t { border-top-width: 1px; }
-.border-slate-800 { border-color: #1e293b; }
-.py-8 { padding-top: 2rem; padding-bottom: 2rem; }
-.text-slate-500 { color: #64748b; }
-
+      body { margin: 0; font-family: system-ui, -apple-system, sans-serif; }
+      .js-enabled .js-only { display: inline; }
+      .js-disabled .no-js-only { display: inline; }
+      .project-details { display: none; }
+      .js-enabled .project-details.expanded { display: block; }
     </style>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        document.body.classList.add('js-enabled');
+        document.querySelectorAll('[data-expand]').forEach(function(btn) {
+          btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            var targetId = this.dataset.expand;
+            var details = document.getElementById(targetId);
+            if (details) {
+              details.classList.toggle('expanded');
+              this.textContent = details.classList.contains('expanded') ? 'Show less ↑' : 'Show more ↓';
+            }
+          });
+        });
+      });
+    </script>
   </head>
-  <body>
+  <body class="min-h-screen bg-slate-950 text-white js-disabled">
     <header class="bg-gradient-to-r from-slate-900 to-slate-950 py-20 px-4">
       <div class="container mx-auto text-center">
+        <div class="flex justify-center mb-6">
+          <svg width="200" height="80" viewBox="0 0 200 80">
+            <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" 
+                  font-size="32" font-weight="bold" fill="url(#grad1)">vincents.ai</text>
+            <defs>
+              <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#fb923c" />
+                <stop offset="100%" stop-color="#a855f7" />
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
         <h1 class="text-6xl font-extrabold bg-gradient-to-r from-orange-400 via-purple-500 to-orange-400 bg-clip-text text-transparent">
           vincents.ai
         </h1>
@@ -87,870 +56,203 @@ body { margin: 0; font-family: system-ui, -apple-system, sans-serif; min-height:
     
     <section class="py-16 px-4">
       <div class="container mx-auto">
-        <h2 class="text-4xl font-bold text-center mb-12">Projects</h2>
+        <h2 class="text-4xl font-bold text-center mb-4">Projects</h2>
+        <p class="text-center text-slate-400 mb-12">
+          <span class="no-js-only">Click projects for details.</span>
+          <span class="js-only">Click to expand details inline.</span>
+        </p>
         
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <div 
-   class="project-card"
-   style="background-color: #0f172a; border-radius: 0.75rem; padding: 1.5rem; border-top-width: 4px; transition: all 200ms; border-top-color: #4f46e5">
-  <div style="width: 5rem; height: 5rem; margin-bottom: 1rem;">
-    <svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <!-- ADP Logo (Generated via Nix) -->
-  <defs>
-  <linearGradient id="grad-agentic" x1="0%" y1="0%" x2="100%" y2="100%">
-  <stop offset="0%" stop-color="#d8b4fe" />
-  <stop offset="100%" stop-color="#7e22ce" />
-</linearGradient>
-      <linearGradient id="grad-brandCore" x1="0%" y1="0%" x2="100%" y2="100%">
-  <stop offset="0%" stop-color="#fdba74" />
-  <stop offset="100%" stop-color="#c2410c" />
-</linearGradient>
-      <linearGradient id="grad-compliance" x1="0%" y1="0%" x2="100%" y2="100%">
-  <stop offset="0%" stop-color="#fcd34d" />
-  <stop offset="100%" stop-color="#b45309" />
-</linearGradient>
-      <linearGradient id="grad-execution" x1="0%" y1="0%" x2="100%" y2="100%">
-  <stop offset="0%" stop-color="#67e8f9" />
-  <stop offset="100%" stop-color="#0891b2" />
-</linearGradient>
-      <linearGradient id="grad-financial" x1="0%" y1="0%" x2="100%" y2="100%">
-  <stop offset="0%" stop-color="#fda4af" />
-  <stop offset="100%" stop-color="#9f1239" />
-</linearGradient>
-      <linearGradient id="grad-frontend" x1="0%" y1="0%" x2="100%" y2="100%">
-  <stop offset="0%" stop-color="#5eead4" />
-  <stop offset="100%" stop-color="#0f766e" />
-</linearGradient>
-      <linearGradient id="grad-infrastructure" x1="0%" y1="0%" x2="100%" y2="100%">
-  <stop offset="0%" stop-color="#34d399" />
-  <stop offset="100%" stop-color="#064e3b" />
-</linearGradient>
-      <linearGradient id="grad-intelligence" x1="0%" y1="0%" x2="100%" y2="100%">
-  <stop offset="0%" stop-color="#34d399" />
-  <stop offset="100%" stop-color="#047857" />
-</linearGradient>
-      <linearGradient id="grad-platform" x1="0%" y1="0%" x2="100%" y2="100%">
-  <stop offset="0%" stop-color="#818cf8" />
-  <stop offset="100%" stop-color="#3730a3" />
-</linearGradient>
-      <linearGradient id="grad-tooling" x1="0%" y1="0%" x2="100%" y2="100%">
-  <stop offset="0%" stop-color="#94a3b8" />
-  <stop offset="100%" stop-color="#334155" />
-</linearGradient>
-  <radialGradient id="grad-core-glow" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
-    <stop offset="0%" stop-color="#ffffff" stop-opacity="0.3" />
-    <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
-  </radialGradient>
-</defs>
+          
+        {wrapper_start}
+           style="background-color: #0f172a; border-radius: 0.75rem; padding: 1.5rem; 
+                  border-top: 4px solid {color}; transition: all 200ms;"
+           onmouseover="this.style.transform='translateY(-0.25rem)'; this.style.boxShadow='0 20px 25px -5px rgba(0,0,0,0.1)'"
+           onmouseout="this.style.transform=''; this.style.boxShadow=''">
+          <div style="width: 5rem; height: 5rem; margin-bottom: 1rem;">
+            <!-- SVG logo would be embedded here -->
+          </div>
+          <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem; color: {color};">{title}</h3>
+          <p style="font-size: 0.875rem; font-weight: 600; letter-spacing: 0.05em; 
+                    text-transform: uppercase; color: #94a3b8; margin-bottom: 0.5rem;">{tagline}</p>
+          <p style="color: #cbd5e1; font-size: 0.875rem; margin-bottom: 1rem;">{desc}</p>
+          <span style="display: inline-block; padding: 0.25rem 0.75rem; border-radius: 9999px; 
+                       font-size: 0.75rem; font-weight: 600; text-transform: uppercase; 
+                       letter-spacing: 0.05em; border: 1px solid currentColor; color: {color};">
+            open-source
+          </span>
+        {wrapper_end}
 
-  <g stroke-width="22" stroke-linecap="round">
-  <circle cx="256" cy="256" r="210" stroke="url(#grad-platform)" stroke-opacity="0.8" stroke-dasharray="60 30" />
-  <path d="M210 461 A 210 210 0 0 1 118 420" stroke="url(#grad-frontend)" stroke-opacity="1.0" />
-  <path d="M195 54 A 210 210 0 0 1 256 46" stroke="url(#grad-brandCore)" stroke-opacity="1.0" />
-</g>
-<g stroke-width="14" stroke-linecap="round">
-  <circle cx="256" cy="256" r="145" stroke="url(#grad-platform)" stroke-opacity="0.15" />
-  <path d="M256 111 A 145 145 0 0 1 401 256" stroke="url(#grad-platform)" stroke-opacity="1.0" stroke-dasharray="100 20" />
-  <path d="M111 256 A 145 145 0 0 1 256 111" stroke="url(#grad-brandCore)" stroke-opacity="0.5" stroke-dasharray="10 30 60 20" />
-  <path d="M256 401 A 145 145 0 0 1 111 256" stroke="url(#grad-platform)" stroke-opacity="0.8" stroke-dasharray="40 15 80 10" />
-</g>
-<g>
-  <circle cx="256" cy="256" r="85" stroke="url(#grad-platform)" stroke-opacity="0.5" stroke-width="18" stroke-dasharray="10 15" stroke-linecap="round" />
-  <path d="M256 195 L 305 223 V 289 L 256 317 L 207 289 V 223 Z" fill="url(#grad-platform)" fill-opacity="0.3" stroke="url(#grad-platform)" stroke-opacity="1.0" stroke-width="8" stroke-linejoin="round" />
-  <line x1="256" y1="195" x2="256" y2="317" stroke="url(#grad-platform)" stroke-opacity="0.5" stroke-width="4" />
-  <circle cx="256" cy="256" r="85" fill="url(#grad-core-glow)" />
-</g>
-<circle cx="256" cy="46" r="8" fill="url(#grad-platform)" fill-opacity="1.0" />
-<circle cx="466" cy="256" r="8" fill="url(#grad-brandCore)" fill-opacity="1.0" />
-<circle cx="256" cy="466" r="8" fill="url(#grad-platform)" fill-opacity="1.0" />
-<circle cx="46" cy="256" r="8" fill="url(#grad-platform)" fill-opacity="1.0" />
+        {wrapper_start}
+           style="background-color: #0f172a; border-radius: 0.75rem; padding: 1.5rem; 
+                  border-top: 4px solid {color}; transition: all 200ms;"
+           onmouseover="this.style.transform='translateY(-0.25rem)'; this.style.boxShadow='0 20px 25px -5px rgba(0,0,0,0.1)'"
+           onmouseout="this.style.transform=''; this.style.boxShadow=''">
+          <div style="width: 5rem; height: 5rem; margin-bottom: 1rem;">
+            <!-- SVG logo would be embedded here -->
+          </div>
+          <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem; color: {color};">{title}</h3>
+          <p style="font-size: 0.875rem; font-weight: 600; letter-spacing: 0.05em; 
+                    text-transform: uppercase; color: #94a3b8; margin-bottom: 0.5rem;">{tagline}</p>
+          <p style="color: #cbd5e1; font-size: 0.875rem; margin-bottom: 1rem;">{desc}</p>
+          <span style="display: inline-block; padding: 0.25rem 0.75rem; border-radius: 9999px; 
+                       font-size: 0.75rem; font-weight: 600; text-transform: uppercase; 
+                       letter-spacing: 0.05em; border: 1px solid currentColor; color: {color};">
+            open-source
+          </span>
+        {wrapper_end}
 
-</svg>
+        {wrapper_start}
+           style="background-color: #0f172a; border-radius: 0.75rem; padding: 1.5rem; 
+                  border-top: 4px solid {color}; transition: all 200ms;"
+           onmouseover="this.style.transform='translateY(-0.25rem)'; this.style.boxShadow='0 20px 25px -5px rgba(0,0,0,0.1)'"
+           onmouseout="this.style.transform=''; this.style.boxShadow=''">
+          <div style="width: 5rem; height: 5rem; margin-bottom: 1rem;">
+            <!-- SVG logo would be embedded here -->
+          </div>
+          <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem; color: {color};">{title}</h3>
+          <p style="font-size: 0.875rem; font-weight: 600; letter-spacing: 0.05em; 
+                    text-transform: uppercase; color: #94a3b8; margin-bottom: 0.5rem;">{tagline}</p>
+          <p style="color: #cbd5e1; font-size: 0.875rem; margin-bottom: 1rem;">{desc}</p>
+          <span style="display: inline-block; padding: 0.25rem 0.75rem; border-radius: 9999px; 
+                       font-size: 0.75rem; font-weight: 600; text-transform: uppercase; 
+                       letter-spacing: 0.05em; border: 1px solid currentColor; color: {color};">
+            open-source
+          </span>
+        {wrapper_end}
 
-  </div>
-  <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem; color: #4f46e5">ADP</h3>
-  <p style="font-size: 0.875rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: #94a3b8; margin-bottom: 0.5rem;">AGENTIC DEVELOPMENT PLATFORM</p>
-  <p style="color: #cbd5e1; font-size: 0.875rem; margin-bottom: 1rem;">Agentic Development Platform - enterprise-grade tools for building AI agent systems. Commercial version built on top of agentic-repos.</p>
-  <span style="display: inline-block; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; border: 1px solid currentColor; color: #4f46e5">
-    platform
-  </span>
-</div>
+        {wrapper_start}
+           style="background-color: #0f172a; border-radius: 0.75rem; padding: 1.5rem; 
+                  border-top: 4px solid {color}; transition: all 200ms;"
+           onmouseover="this.style.transform='translateY(-0.25rem)'; this.style.boxShadow='0 20px 25px -5px rgba(0,0,0,0.1)'"
+           onmouseout="this.style.transform=''; this.style.boxShadow=''">
+          <div style="width: 5rem; height: 5rem; margin-bottom: 1rem;">
+            <!-- SVG logo would be embedded here -->
+          </div>
+          <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem; color: {color};">{title}</h3>
+          <p style="font-size: 0.875rem; font-weight: 600; letter-spacing: 0.05em; 
+                    text-transform: uppercase; color: #94a3b8; margin-bottom: 0.5rem;">{tagline}</p>
+          <p style="color: #cbd5e1; font-size: 0.875rem; margin-bottom: 1rem;">{desc}</p>
+          <span style="display: inline-block; padding: 0.25rem 0.75rem; border-radius: 9999px; 
+                       font-size: 0.75rem; font-weight: 600; text-transform: uppercase; 
+                       letter-spacing: 0.05em; border: 1px solid currentColor; color: {color};">
+            open-source
+          </span>
+        {wrapper_end}
 
-          <div 
-   class="project-card"
-   style="background-color: #0f172a; border-radius: 0.75rem; padding: 1.5rem; border-top-width: 4px; transition: all 200ms; border-top-color: #a855f7">
-  <div style="width: 5rem; height: 5rem; margin-bottom: 1rem;">
-    <svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <!-- Agentic-Loop Logo (Generated via Nix) -->
-  <defs>
-  <linearGradient id="grad-agentic" x1="0%" y1="0%" x2="100%" y2="100%">
-  <stop offset="0%" stop-color="#d8b4fe" />
-  <stop offset="100%" stop-color="#7e22ce" />
-</linearGradient>
-      <linearGradient id="grad-brandCore" x1="0%" y1="0%" x2="100%" y2="100%">
-  <stop offset="0%" stop-color="#fdba74" />
-  <stop offset="100%" stop-color="#c2410c" />
-</linearGradient>
-      <linearGradient id="grad-compliance" x1="0%" y1="0%" x2="100%" y2="100%">
-  <stop offset="0%" stop-color="#fcd34d" />
-  <stop offset="100%" stop-color="#b45309" />
-</linearGradient>
-      <linearGradient id="grad-execution" x1="0%" y1="0%" x2="100%" y2="100%">
-  <stop offset="0%" stop-color="#67e8f9" />
-  <stop offset="100%" stop-color="#0891b2" />
-</linearGradient>
-      <linearGradient id="grad-financial" x1="0%" y1="0%" x2="100%" y2="100%">
-  <stop offset="0%" stop-color="#fda4af" />
-  <stop offset="100%" stop-color="#9f1239" />
-</linearGradient>
-      <linearGradient id="grad-frontend" x1="0%" y1="0%" x2="100%" y2="100%">
-  <stop offset="0%" stop-color="#5eead4" />
-  <stop offset="100%" stop-color="#0f766e" />
-</linearGradient>
-      <linearGradient id="grad-infrastructure" x1="0%" y1="0%" x2="100%" y2="100%">
-  <stop offset="0%" stop-color="#34d399" />
-  <stop offset="100%" stop-color="#064e3b" />
-</linearGradient>
-      <linearGradient id="grad-intelligence" x1="0%" y1="0%" x2="100%" y2="100%">
-  <stop offset="0%" stop-color="#34d399" />
-  <stop offset="100%" stop-color="#047857" />
-</linearGradient>
-      <linearGradient id="grad-platform" x1="0%" y1="0%" x2="100%" y2="100%">
-  <stop offset="0%" stop-color="#818cf8" />
-  <stop offset="100%" stop-color="#3730a3" />
-</linearGradient>
-      <linearGradient id="grad-tooling" x1="0%" y1="0%" x2="100%" y2="100%">
-  <stop offset="0%" stop-color="#94a3b8" />
-  <stop offset="100%" stop-color="#334155" />
-</linearGradient>
-  <radialGradient id="grad-core-glow" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
-    <stop offset="0%" stop-color="#ffffff" stop-opacity="0.3" />
-    <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
-  </radialGradient>
-</defs>
+        {wrapper_start}
+           style="background-color: #0f172a; border-radius: 0.75rem; padding: 1.5rem; 
+                  border-top: 4px solid {color}; transition: all 200ms;"
+           onmouseover="this.style.transform='translateY(-0.25rem)'; this.style.boxShadow='0 20px 25px -5px rgba(0,0,0,0.1)'"
+           onmouseout="this.style.transform=''; this.style.boxShadow=''">
+          <div style="width: 5rem; height: 5rem; margin-bottom: 1rem;">
+            <!-- SVG logo would be embedded here -->
+          </div>
+          <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem; color: {color};">{title}</h3>
+          <p style="font-size: 0.875rem; font-weight: 600; letter-spacing: 0.05em; 
+                    text-transform: uppercase; color: #94a3b8; margin-bottom: 0.5rem;">{tagline}</p>
+          <p style="color: #cbd5e1; font-size: 0.875rem; margin-bottom: 1rem;">{desc}</p>
+          <span style="display: inline-block; padding: 0.25rem 0.75rem; border-radius: 9999px; 
+                       font-size: 0.75rem; font-weight: 600; text-transform: uppercase; 
+                       letter-spacing: 0.05em; border: 1px solid currentColor; color: {color};">
+            open-source
+          </span>
+        {wrapper_end}
 
-  <g stroke-width="20" stroke-linecap="round">
-  <path d="M256 46 A 210 210 0 0 1 327 58" stroke="url(#grad-intelligence)" stroke-opacity="0.8" />
-  <path d="M358 72 A 210 210 0 0 1 418 114" stroke="url(#grad-infrastructure)" stroke-opacity="0.5" />
-  <path d="M441 148 A 210 210 0 0 1 463 211" stroke="url(#grad-intelligence)" stroke-opacity="1.0" />
-  <path d="M466 256 A 210 210 0 0 1 454 321" stroke="url(#grad-agentic)" stroke-opacity="0.8" />
-  <path d="M428 368 A 210 210 0 0 1 371 423" stroke="url(#grad-agentic)" stroke-opacity="1.0" />
-  <path d="M327 454 A 210 210 0 0 1 256 466" stroke="url(#grad-brandCore)" stroke-opacity="1.0" />
-  <path d="M211 463 A 210 210 0 0 1 148 441" stroke="url(#grad-brandCore)" stroke-opacity="0.5" />
-  <path d="M100 411 A 210 210 0 0 1 61 350" stroke="url(#grad-execution)" stroke-opacity="0.8" />
-  <path d="M48 301 A 210 210 0 0 1 46 256" stroke="url(#grad-agentic)" stroke-opacity="1.0" />
-  <path d="M50 200 A 210 210 0 0 1 85 130" stroke="url(#grad-execution)" stroke-opacity="0.5" />
-  <path d="M125 90 A 210 210 0 0 1 200 55" stroke="url(#grad-execution)" stroke-opacity="0.8" />
-</g>
-<g stroke-width="14" stroke-linecap="round">
-  <circle cx="256" cy="256" r="145" stroke="url(#grad-agentic)" stroke-opacity="0.15" />
-  <path d="M256 111 A 145 145 0 0 1 401 256" stroke="url(#grad-intelligence)" stroke-opacity="0.8" stroke-dasharray="80 20" />
-  <path d="M256 401 A 145 145 0 0 1 111 256" stroke="url(#grad-agentic)" stroke-opacity="1.0" stroke-dasharray="40 10 60 20" />
-</g>
-<g stroke-width="18" stroke-linecap="round">
-  <path d="M256 171 A 85 85 0 1 1 185 305" stroke="url(#grad-agentic)" stroke-opacity="0.8" fill="none" />
-  <path d="M205 295 L 185 305 L 175 285" stroke="url(#grad-agentic)" stroke-opacity="1.0" fill="none" stroke-linejoin="round" />
-  <circle cx="256" cy="256" r="30" stroke="url(#grad-intelligence)" stroke-opacity="0.5" stroke-width="4" stroke-dasharray="5 5" />
-  <circle cx="256" cy="256" r="85" fill="url(#grad-core-glow)" />
-  <circle cx="256" cy="256" r="12" fill="url(#grad-intelligence)" fill-opacity="0.8" />
-</g>
+        {wrapper_start}
+           style="background-color: #0f172a; border-radius: 0.75rem; padding: 1.5rem; 
+                  border-top: 4px solid {color}; transition: all 200ms;"
+           onmouseover="this.style.transform='translateY(-0.25rem)'; this.style.boxShadow='0 20px 25px -5px rgba(0,0,0,0.1)'"
+           onmouseout="this.style.transform=''; this.style.boxShadow=''">
+          <div style="width: 5rem; height: 5rem; margin-bottom: 1rem;">
+            <!-- SVG logo would be embedded here -->
+          </div>
+          <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem; color: {color};">{title}</h3>
+          <p style="font-size: 0.875rem; font-weight: 600; letter-spacing: 0.05em; 
+                    text-transform: uppercase; color: #94a3b8; margin-bottom: 0.5rem;">{tagline}</p>
+          <p style="color: #cbd5e1; font-size: 0.875rem; margin-bottom: 1rem;">{desc}</p>
+          <span style="display: inline-block; padding: 0.25rem 0.75rem; border-radius: 9999px; 
+                       font-size: 0.75rem; font-weight: 600; text-transform: uppercase; 
+                       letter-spacing: 0.05em; border: 1px solid currentColor; color: {color};">
+            open-source
+          </span>
+        {wrapper_end}
 
-</svg>
+        {wrapper_start}
+           style="background-color: #0f172a; border-radius: 0.75rem; padding: 1.5rem; 
+                  border-top: 4px solid {color}; transition: all 200ms;"
+           onmouseover="this.style.transform='translateY(-0.25rem)'; this.style.boxShadow='0 20px 25px -5px rgba(0,0,0,0.1)'"
+           onmouseout="this.style.transform=''; this.style.boxShadow=''">
+          <div style="width: 5rem; height: 5rem; margin-bottom: 1rem;">
+            <!-- SVG logo would be embedded here -->
+          </div>
+          <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem; color: {color};">{title}</h3>
+          <p style="font-size: 0.875rem; font-weight: 600; letter-spacing: 0.05em; 
+                    text-transform: uppercase; color: #94a3b8; margin-bottom: 0.5rem;">{tagline}</p>
+          <p style="color: #cbd5e1; font-size: 0.875rem; margin-bottom: 1rem;">{desc}</p>
+          <span style="display: inline-block; padding: 0.25rem 0.75rem; border-radius: 9999px; 
+                       font-size: 0.75rem; font-weight: 600; text-transform: uppercase; 
+                       letter-spacing: 0.05em; border: 1px solid currentColor; color: {color};">
+            open-source
+          </span>
+        {wrapper_end}
 
-  </div>
-  <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem; color: #a855f7">Agentic Loop</h3>
-  <p style="font-size: 0.875rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: #94a3b8; margin-bottom: 0.5rem;">TRAIT-FIRST AI AGENT LOOP</p>
-  <p style="color: #cbd5e1; font-size: 0.875rem; margin-bottom: 1rem;">Trait-first AI agent loop system with 14 crates, WASM plugins, per-project sharded storage, custom Gherkin workflow engine, and engram-evo self-improvement</p>
-  <span style="display: inline-block; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; border: 1px solid currentColor; color: #a855f7">
-    agentic
-  </span>
-</div>
+        {wrapper_start}
+           style="background-color: #0f172a; border-radius: 0.75rem; padding: 1.5rem; 
+                  border-top: 4px solid {color}; transition: all 200ms;"
+           onmouseover="this.style.transform='translateY(-0.25rem)'; this.style.boxShadow='0 20px 25px -5px rgba(0,0,0,0.1)'"
+           onmouseout="this.style.transform=''; this.style.boxShadow=''">
+          <div style="width: 5rem; height: 5rem; margin-bottom: 1rem;">
+            <!-- SVG logo would be embedded here -->
+          </div>
+          <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem; color: {color};">{title}</h3>
+          <p style="font-size: 0.875rem; font-weight: 600; letter-spacing: 0.05em; 
+                    text-transform: uppercase; color: #94a3b8; margin-bottom: 0.5rem;">{tagline}</p>
+          <p style="color: #cbd5e1; font-size: 0.875rem; margin-bottom: 1rem;">{desc}</p>
+          <span style="display: inline-block; padding: 0.25rem 0.75rem; border-radius: 9999px; 
+                       font-size: 0.75rem; font-weight: 600; text-transform: uppercase; 
+                       letter-spacing: 0.05em; border: 1px solid currentColor; color: {color};">
+            open-source
+          </span>
+        {wrapper_end}
 
-          <div 
-   class="project-card"
-   style="background-color: #0f172a; border-radius: 0.75rem; padding: 1.5rem; border-top-width: 4px; transition: all 200ms; border-top-color: #059669">
-  <div style="width: 5rem; height: 5rem; margin-bottom: 1rem;">
-    <svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <!-- Agentic-Repos Logo (Generated via Nix) -->
-  <defs>
-  <linearGradient id="grad-agentic" x1="0%" y1="0%" x2="100%" y2="100%">
-  <stop offset="0%" stop-color="#d8b4fe" />
-  <stop offset="100%" stop-color="#7e22ce" />
-</linearGradient>
-      <linearGradient id="grad-brandCore" x1="0%" y1="0%" x2="100%" y2="100%">
-  <stop offset="0%" stop-color="#fdba74" />
-  <stop offset="100%" stop-color="#c2410c" />
-</linearGradient>
-      <linearGradient id="grad-compliance" x1="0%" y1="0%" x2="100%" y2="100%">
-  <stop offset="0%" stop-color="#fcd34d" />
-  <stop offset="100%" stop-color="#b45309" />
-</linearGradient>
-      <linearGradient id="grad-execution" x1="0%" y1="0%" x2="100%" y2="100%">
-  <stop offset="0%" stop-color="#67e8f9" />
-  <stop offset="100%" stop-color="#0891b2" />
-</linearGradient>
-      <linearGradient id="grad-financial" x1="0%" y1="0%" x2="100%" y2="100%">
-  <stop offset="0%" stop-color="#fda4af" />
-  <stop offset="100%" stop-color="#9f1239" />
-</linearGradient>
-      <linearGradient id="grad-frontend" x1="0%" y1="0%" x2="100%" y2="100%">
-  <stop offset="0%" stop-color="#5eead4" />
-  <stop offset="100%" stop-color="#0f766e" />
-</linearGradient>
-      <linearGradient id="grad-infrastructure" x1="0%" y1="0%" x2="100%" y2="100%">
-  <stop offset="0%" stop-color="#34d399" />
-  <stop offset="100%" stop-color="#064e3b" />
-</linearGradient>
-      <linearGradient id="grad-intelligence" x1="0%" y1="0%" x2="100%" y2="100%">
-  <stop offset="0%" stop-color="#34d399" />
-  <stop offset="100%" stop-color="#047857" />
-</linearGradient>
-      <linearGradient id="grad-platform" x1="0%" y1="0%" x2="100%" y2="100%">
-  <stop offset="0%" stop-color="#818cf8" />
-  <stop offset="100%" stop-color="#3730a3" />
-</linearGradient>
-      <linearGradient id="grad-tooling" x1="0%" y1="0%" x2="100%" y2="100%">
-  <stop offset="0%" stop-color="#94a3b8" />
-  <stop offset="100%" stop-color="#334155" />
-</linearGradient>
-  <radialGradient id="grad-core-glow" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
-    <stop offset="0%" stop-color="#ffffff" stop-opacity="0.3" />
-    <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
-  </radialGradient>
-</defs>
+        {wrapper_start}
+           style="background-color: #0f172a; border-radius: 0.75rem; padding: 1.5rem; 
+                  border-top: 4px solid {color}; transition: all 200ms;"
+           onmouseover="this.style.transform='translateY(-0.25rem)'; this.style.boxShadow='0 20px 25px -5px rgba(0,0,0,0.1)'"
+           onmouseout="this.style.transform=''; this.style.boxShadow=''">
+          <div style="width: 5rem; height: 5rem; margin-bottom: 1rem;">
+            <!-- SVG logo would be embedded here -->
+          </div>
+          <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem; color: {color};">{title}</h3>
+          <p style="font-size: 0.875rem; font-weight: 600; letter-spacing: 0.05em; 
+                    text-transform: uppercase; color: #94a3b8; margin-bottom: 0.5rem;">{tagline}</p>
+          <p style="color: #cbd5e1; font-size: 0.875rem; margin-bottom: 1rem;">{desc}</p>
+          <span style="display: inline-block; padding: 0.25rem 0.75rem; border-radius: 9999px; 
+                       font-size: 0.75rem; font-weight: 600; text-transform: uppercase; 
+                       letter-spacing: 0.05em; border: 1px solid currentColor; color: {color};">
+            open-source
+          </span>
+        {wrapper_end}
 
-  <g stroke-width="22" stroke-linecap="round">
-  <path d="M256 46 A 210 210 0 0 1 420 126" stroke="url(#grad-infrastructure)" stroke-opacity="1.0" />
-  <path d="M447 160 A 210 210 0 0 1 466 256" stroke="url(#grad-infrastructure)" stroke-opacity="0.5" />
-  <path d="M455 300 A 210 210 0 0 1 300 455" stroke="url(#grad-infrastructure)" stroke-opacity="0.8" />
-  <path d="M210 461 A 210 210 0 0 1 60 300" stroke="url(#grad-infrastructure)" stroke-opacity="1.0" />
-  <path d="M46 256 A 210 210 0 0 1 95 110" stroke="url(#grad-infrastructure)" stroke-opacity="0.5" />
-  <path d="M140 73 A 210 210 0 0 1 210 50" stroke="url(#grad-brandCore)" stroke-opacity="1.0" />
-</g>
-<g stroke-width="14" stroke-linecap="round">
-  <circle cx="256" cy="256" r="145" stroke="url(#grad-infrastructure)" stroke-opacity="0.15" />
-  <path d="M256 111 A 145 145 0 0 1 401 256" stroke="url(#grad-infrastructure)" stroke-opacity="0.8" stroke-dasharray="40 20 80 20" />
-  <path d="M111 256 A 145 145 0 0 1 256 111" stroke="url(#grad-brandCore)" stroke-opacity="0.5" stroke-dasharray="10 30 50 20" />
-  <path d="M256 401 A 145 145 0 0 1 111 256" stroke="url(#grad-infrastructure)" stroke-opacity="1.0" stroke-dasharray="100 40" />
-</g>
-<g>
-  <circle cx="256" cy="256" r="85" stroke="url(#grad-infrastructure)" stroke-opacity="0.5" stroke-width="18" stroke-dasharray="10 15" stroke-linecap="round" />
-  <g stroke="url(#grad-infrastructure)" stroke-opacity="1.0" stroke-width="12" stroke-linecap="round">
-    <path d="M256 256 L 256 190" />
-    <path d="M256 256 L 310 310" />
-    <path d="M256 256 L 202 310" />
-  </g>
-  <circle cx="256" cy="256" r="18" fill="url(#grad-infrastructure)" fill-opacity="1.0" />
-  <circle cx="256" cy="190" r="10" fill="url(#grad-brandCore)" fill-opacity="1.0" />
-  <circle cx="310" cy="310" r="10" fill="url(#grad-infrastructure)" fill-opacity="1.0" />
-  <circle cx="202" cy="310" r="10" fill="url(#grad-infrastructure)" fill-opacity="1.0" />
-</g>
-<circle cx="420" cy="126" r="12" fill="url(#grad-infrastructure)" fill-opacity="1.0" />
-<circle cx="300" cy="455" r="12" fill="url(#grad-infrastructure)" fill-opacity="1.0" />
-<circle cx="95" cy="110" r="12" fill="url(#grad-brandCore)" fill-opacity="1.0" />
-
-</svg>
-
-  </div>
-  <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem; color: #059669">Agentic Repos</h3>
-  <p style="font-size: 0.875rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: #94a3b8; margin-bottom: 0.5rem;">OPEN-CORE GIT SERVER</p>
-  <p style="color: #cbd5e1; font-size: 0.875rem; margin-bottom: 1rem;">Open-core AGPL Git server - core of ADP. Provides Git hosting, SSH, HTTP API, LFS, RBAC, and Skylet plugin interface.</p>
-  <span style="display: inline-block; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; border: 1px solid currentColor; color: #059669">
-    infrastructure
-  </span>
-</div>
-
-          <div 
-   class="project-card"
-   style="background-color: #0f172a; border-radius: 0.75rem; padding: 1.5rem; border-top-width: 4px; transition: all 200ms; border-top-color: #e11d48">
-  <div style="width: 5rem; height: 5rem; margin-bottom: 1rem;">
-    <svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <!-- Billing Auth Service Logo (Generated via Nix) -->
-  <defs>
-  <linearGradient id="grad-agentic" x1="0%" y1="0%" x2="100%" y2="100%">
-  <stop offset="0%" stop-color="#d8b4fe" />
-  <stop offset="100%" stop-color="#7e22ce" />
-</linearGradient>
-      <linearGradient id="grad-brandCore" x1="0%" y1="0%" x2="100%" y2="100%">
-  <stop offset="0%" stop-color="#fdba74" />
-  <stop offset="100%" stop-color="#c2410c" />
-</linearGradient>
-      <linearGradient id="grad-compliance" x1="0%" y1="0%" x2="100%" y2="100%">
-  <stop offset="0%" stop-color="#fcd34d" />
-  <stop offset="100%" stop-color="#b45309" />
-</linearGradient>
-      <linearGradient id="grad-execution" x1="0%" y1="0%" x2="100%" y2="100%">
-  <stop offset="0%" stop-color="#67e8f9" />
-  <stop offset="100%" stop-color="#0891b2" />
-</linearGradient>
-      <linearGradient id="grad-financial" x1="0%" y1="0%" x2="100%" y2="100%">
-  <stop offset="0%" stop-color="#fda4af" />
-  <stop offset="100%" stop-color="#9f1239" />
-</linearGradient>
-      <linearGradient id="grad-frontend" x1="0%" y1="0%" x2="100%" y2="100%">
-  <stop offset="0%" stop-color="#5eead4" />
-  <stop offset="100%" stop-color="#0f766e" />
-</linearGradient>
-      <linearGradient id="grad-infrastructure" x1="0%" y1="0%" x2="100%" y2="100%">
-  <stop offset="0%" stop-color="#34d399" />
-  <stop offset="100%" stop-color="#064e3b" />
-</linearGradient>
-      <linearGradient id="grad-intelligence" x1="0%" y1="0%" x2="100%" y2="100%">
-  <stop offset="0%" stop-color="#34d399" />
-  <stop offset="100%" stop-color="#047857" />
-</linearGradient>
-      <linearGradient id="grad-platform" x1="0%" y1="0%" x2="100%" y2="100%">
-  <stop offset="0%" stop-color="#818cf8" />
-  <stop offset="100%" stop-color="#3730a3" />
-</linearGradient>
-      <linearGradient id="grad-tooling" x1="0%" y1="0%" x2="100%" y2="100%">
-  <stop offset="0%" stop-color="#94a3b8" />
-  <stop offset="100%" stop-color="#334155" />
-</linearGradient>
-  <radialGradient id="grad-core-glow" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
-    <stop offset="0%" stop-color="#ffffff" stop-opacity="0.3" />
-    <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
-  </radialGradient>
-</defs>
-
-  <g stroke-width="22" stroke-linecap="round">
-  <path d="M256 46 A 210 210 0 0 1 437.9 151" stroke="url(#grad-platform)" stroke-opacity="0.8" />
-  <path d="M458.9 201.8 A 210 210 0 0 1 465.8 240" stroke="url(#grad-platform)" stroke-opacity="1.0" />
-  <path d="M427.1 377.6 A 210 210 0 0 1 327.8 453.2" stroke="url(#grad-financial)" stroke-opacity="0.8" />
-  <path d="M256 466 A 210 210 0 0 1 95.4 391.3" stroke="url(#grad-financial)" stroke-opacity="0.5" />
-  <path d="M64.6 318.5 A 210 210 0 0 1 50.4 200" stroke="url(#grad-platform)" stroke-opacity="1.0" />
-  <path d="M85.4 130 A 210 210 0 0 1 195.9 54" stroke="url(#grad-platform)" stroke-opacity="0.8" />
-  <path d="M225 48.5 A 210 210 0 0 1 256 46" stroke="url(#grad-brandCore)" stroke-opacity="1.0" stroke-width="24" />
-</g>
-<g stroke-width="16" stroke-linecap="round">
-  <circle cx="256" cy="256" r="145" stroke="url(#grad-platform)" stroke-opacity="0.15" />
-  <path d="M256 111 A 145 145 0 0 1 401 256" stroke="url(#grad-platform)" stroke-opacity="0.8" stroke-dasharray="100 20" />
-  <path d="M111 256 A 145 145 0 0 1 256 111" stroke="url(#grad-financial)" stroke-opacity="0.8" stroke-dasharray="60 40" />
-  <path d="M256 401 A 145 145 0 0 1 111 256" stroke="url(#grad-brandCore)" stroke-opacity="0.5" stroke-dasharray="20 15 40 10" />
-</g>
-<g>
-  <circle cx="256" cy="256" r="85" stroke="url(#grad-platform)" stroke-opacity="0.5" stroke-width="18" stroke-dasharray="25 15" stroke-linecap="round" />
-  <circle cx="256" cy="235" r="18" stroke="url(#grad-financial)" stroke-opacity="1.0" stroke-width="10" />
-  <path d="M256 253 L 256 285 M 244 285 H 268" stroke="url(#grad-financial)" stroke-opacity="1.0" stroke-width="10" stroke-linecap="round" />
-  <circle cx="256" cy="256" r="85" fill="url(#grad-core-glow)" />
-  <circle cx="256" cy="256" r="10" fill="url(#grad-platform)" fill-opacity="0.5" />
-</g>
-<circle cx="256" cy="46" r="8" fill="url(#grad-brandCore)" fill-opacity="1.0" />
-<circle cx="466" cy="256" r="8" fill="url(#grad-platform)" fill-opacity="1.0" />
-<circle cx="256" cy="466" r="8" fill="url(#grad-financial)" fill-opacity="1.0" />
-<circle cx="46" cy="256" r="8" fill="url(#grad-platform)" fill-opacity="0.5" />
-
-</svg>
-
-  </div>
-  <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem; color: #e11d48">Billing Auth Service</h3>
-  <p style="font-size: 0.875rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: #94a3b8; margin-bottom: 0.5rem;">SECURE FINANCIAL GATEKEEPER</p>
-  <p style="color: #cbd5e1; font-size: 0.875rem; margin-bottom: 1rem;">Secure authentication service for financial operations and billing</p>
-  <span style="display: inline-block; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; border: 1px solid currentColor; color: #e11d48">
-    financial
-  </span>
-</div>
-
-          <div 
-   class="project-card"
-   style="background-color: #0f172a; border-radius: 0.75rem; padding: 1.5rem; border-top-width: 4px; transition: all 200ms; border-top-color: #e11d48">
-  <div style="width: 5rem; height: 5rem; margin-bottom: 1rem;">
-    <svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <!-- Billing Middleware Logo (Generated via Nix) -->
-  <defs>
-  <linearGradient id="grad-agentic" x1="0%" y1="0%" x2="100%" y2="100%">
-  <stop offset="0%" stop-color="#d8b4fe" />
-  <stop offset="100%" stop-color="#7e22ce" />
-</linearGradient>
-      <linearGradient id="grad-brandCore" x1="0%" y1="0%" x2="100%" y2="100%">
-  <stop offset="0%" stop-color="#fdba74" />
-  <stop offset="100%" stop-color="#c2410c" />
-</linearGradient>
-      <linearGradient id="grad-compliance" x1="0%" y1="0%" x2="100%" y2="100%">
-  <stop offset="0%" stop-color="#fcd34d" />
-  <stop offset="100%" stop-color="#b45309" />
-</linearGradient>
-      <linearGradient id="grad-execution" x1="0%" y1="0%" x2="100%" y2="100%">
-  <stop offset="0%" stop-color="#67e8f9" />
-  <stop offset="100%" stop-color="#0891b2" />
-</linearGradient>
-      <linearGradient id="grad-financial" x1="0%" y1="0%" x2="100%" y2="100%">
-  <stop offset="0%" stop-color="#fda4af" />
-  <stop offset="100%" stop-color="#9f1239" />
-</linearGradient>
-      <linearGradient id="grad-frontend" x1="0%" y1="0%" x2="100%" y2="100%">
-  <stop offset="0%" stop-color="#5eead4" />
-  <stop offset="100%" stop-color="#0f766e" />
-</linearGradient>
-      <linearGradient id="grad-infrastructure" x1="0%" y1="0%" x2="100%" y2="100%">
-  <stop offset="0%" stop-color="#34d399" />
-  <stop offset="100%" stop-color="#064e3b" />
-</linearGradient>
-      <linearGradient id="grad-intelligence" x1="0%" y1="0%" x2="100%" y2="100%">
-  <stop offset="0%" stop-color="#34d399" />
-  <stop offset="100%" stop-color="#047857" />
-</linearGradient>
-      <linearGradient id="grad-platform" x1="0%" y1="0%" x2="100%" y2="100%">
-  <stop offset="0%" stop-color="#818cf8" />
-  <stop offset="100%" stop-color="#3730a3" />
-</linearGradient>
-      <linearGradient id="grad-tooling" x1="0%" y1="0%" x2="100%" y2="100%">
-  <stop offset="0%" stop-color="#94a3b8" />
-  <stop offset="100%" stop-color="#334155" />
-</linearGradient>
-  <radialGradient id="grad-core-glow" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
-    <stop offset="0%" stop-color="#ffffff" stop-opacity="0.3" />
-    <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
-  </radialGradient>
-</defs>
-
-  <g stroke-width="22" stroke-linecap="round">
-  <path d="M256 46 A 210 210 0 0 1 450 200" stroke="url(#grad-financial)" stroke-opacity="1.0" />
-  <path d="M464 256 A 210 210 0 0 1 350 430" stroke="url(#grad-financial)" stroke-opacity="0.5" />
-  <path d="M256 466 A 210 210 0 0 1 60 300" stroke="url(#grad-financial)" stroke-opacity="0.8" />
-  <path d="M120 85 A 210 210 0 0 1 210 52" stroke="url(#grad-brandCore)" stroke-opacity="1.0" />
-</g>
-<g stroke-width="16" stroke-linecap="round">
-  <circle cx="256" cy="256" r="145" stroke="url(#grad-financial)" stroke-opacity="0.15" />
-  <path d="M256 111 A 145 145 0 0 1 401 256" stroke="url(#grad-financial)" stroke-opacity="0.8" stroke-dasharray="80 25" />
-  <path d="M111 256 A 145 145 0 0 1 256 111" stroke="url(#grad-brandCore)" stroke-opacity="0.5" stroke-dasharray="40 10 30 10" />
-  <path d="M256 401 A 145 145 0 0 1 111 256" stroke="url(#grad-financial)" stroke-opacity="1.0" stroke-dasharray="100 30" />
-</g>
-<g>
-  <circle cx="256" cy="256" r="85" stroke="url(#grad-financial)" stroke-opacity="0.5" stroke-width="18" stroke-dasharray="20 15" stroke-linecap="round" />
-  <path d="M220 220 L 292 292 M 220 292 L 292 220" stroke="url(#grad-financial)" stroke-opacity="1.0" stroke-width="10" stroke-linecap="round" />
-  <path d="M200 240 H 312 M 200 272 H 312" stroke="url(#grad-financial)" stroke-opacity="0.5" stroke-width="6" stroke-linecap="round" />
-  <circle cx="256" cy="256" r="85" fill="url(#grad-core-glow)" />
-  <circle cx="256" cy="256" r="14" fill="url(#grad-financial)" fill-opacity="1.0" />
-</g>
-<circle cx="450" cy="200" r="12" fill="url(#grad-financial)" fill-opacity="1.0" />
-<circle cx="60" cy="300" r="12" fill="url(#grad-financial)" fill-opacity="1.0" />
-
-</svg>
-
-  </div>
-  <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem; color: #e11d48">Billing Middleware</h3>
-  <p style="font-size: 0.875rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: #94a3b8; margin-bottom: 0.5rem;">ROUTING & COST OPTIMIZATION</p>
-  <p style="color: #cbd5e1; font-size: 0.875rem; margin-bottom: 1rem;">Routing and cost optimization middleware for LLM API usage</p>
-  <span style="display: inline-block; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; border: 1px solid currentColor; color: #e11d48">
-    financial
-  </span>
-</div>
-
-          <div 
-   class="project-card"
-   style="background-color: #0f172a; border-radius: 0.75rem; padding: 1.5rem; border-top-width: 4px; transition: all 200ms; border-top-color: #10b981">
-  <div style="width: 5rem; height: 5rem; margin-bottom: 1rem;">
-    <svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <!-- Engram Logo (Generated via Nix) -->
-  <defs>
-  <linearGradient id="grad-agentic" x1="0%" y1="0%" x2="100%" y2="100%">
-  <stop offset="0%" stop-color="#d8b4fe" />
-  <stop offset="100%" stop-color="#7e22ce" />
-</linearGradient>
-      <linearGradient id="grad-brandCore" x1="0%" y1="0%" x2="100%" y2="100%">
-  <stop offset="0%" stop-color="#fdba74" />
-  <stop offset="100%" stop-color="#c2410c" />
-</linearGradient>
-      <linearGradient id="grad-compliance" x1="0%" y1="0%" x2="100%" y2="100%">
-  <stop offset="0%" stop-color="#fcd34d" />
-  <stop offset="100%" stop-color="#b45309" />
-</linearGradient>
-      <linearGradient id="grad-execution" x1="0%" y1="0%" x2="100%" y2="100%">
-  <stop offset="0%" stop-color="#67e8f9" />
-  <stop offset="100%" stop-color="#0891b2" />
-</linearGradient>
-      <linearGradient id="grad-financial" x1="0%" y1="0%" x2="100%" y2="100%">
-  <stop offset="0%" stop-color="#fda4af" />
-  <stop offset="100%" stop-color="#9f1239" />
-</linearGradient>
-      <linearGradient id="grad-frontend" x1="0%" y1="0%" x2="100%" y2="100%">
-  <stop offset="0%" stop-color="#5eead4" />
-  <stop offset="100%" stop-color="#0f766e" />
-</linearGradient>
-      <linearGradient id="grad-infrastructure" x1="0%" y1="0%" x2="100%" y2="100%">
-  <stop offset="0%" stop-color="#34d399" />
-  <stop offset="100%" stop-color="#064e3b" />
-</linearGradient>
-      <linearGradient id="grad-intelligence" x1="0%" y1="0%" x2="100%" y2="100%">
-  <stop offset="0%" stop-color="#34d399" />
-  <stop offset="100%" stop-color="#047857" />
-</linearGradient>
-      <linearGradient id="grad-platform" x1="0%" y1="0%" x2="100%" y2="100%">
-  <stop offset="0%" stop-color="#818cf8" />
-  <stop offset="100%" stop-color="#3730a3" />
-</linearGradient>
-      <linearGradient id="grad-tooling" x1="0%" y1="0%" x2="100%" y2="100%">
-  <stop offset="0%" stop-color="#94a3b8" />
-  <stop offset="100%" stop-color="#334155" />
-</linearGradient>
-  <radialGradient id="grad-core-glow" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
-    <stop offset="0%" stop-color="#ffffff" stop-opacity="0.3" />
-    <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
-  </radialGradient>
-</defs>
-
-  <g stroke-width="22" stroke-linecap="round">
-  <circle cx="256" cy="256" r="210" stroke="url(#grad-intelligence)" stroke-opacity="0.5" stroke-dasharray="140 40 80 60 200 40" />
-  <circle cx="256" cy="256" r="210" stroke="url(#grad-brandCore)" stroke-opacity="0.8" stroke-dasharray="0 180 40 180 40 180" />
-</g>
-<circle cx="256" cy="256" r="145" stroke="url(#grad-intelligence)" stroke-opacity="0.8" stroke-width="14" stroke-linecap="round" stroke-dasharray="100 40" />
-<g stroke="url(#grad-intelligence)" stroke-opacity="1.0" stroke-width="12" stroke-linecap="round">
-  <circle cx="256" cy="256" r="85" stroke-opacity="0.5" />
-  <path d="M256 256 L 256 160 M 256 256 L 339 304 M 256 256 L 173 304" />
-  <circle cx="256" cy="256" r="16" fill="url(#grad-intelligence)" fill-opacity="1.0" />
-  <circle cx="256" cy="160" r="10" fill="url(#grad-intelligence)" fill-opacity="1.0" />
-  <circle cx="339" cy="304" r="10" fill="url(#grad-intelligence)" fill-opacity="1.0" />
-  <circle cx="173" cy="304" r="10" fill="url(#grad-intelligence)" fill-opacity="1.0" />
-</g>
-
-</svg>
-
-  </div>
-  <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem; color: #10b981">Engram</h3>
-  <p style="font-size: 0.875rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: #94a3b8; margin-bottom: 0.5rem;">DISTRIBUTED AI MEMORY LAYER</p>
-  <p style="color: #cbd5e1; font-size: 0.875rem; margin-bottom: 1rem;">A distributed memory system for AI agents that persists context, tasks, reasoning, and knowledge across sessions and teams.</p>
-  <span style="display: inline-block; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; border: 1px solid currentColor; color: #10b981">
-    intelligence
-  </span>
-</div>
-
-          <div 
-   class="project-card"
-   style="background-color: #0f172a; border-radius: 0.75rem; padding: 1.5rem; border-top-width: 4px; transition: all 200ms; border-top-color: #f59e0b">
-  <div style="width: 5rem; height: 5rem; margin-bottom: 1rem;">
-    <svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <!-- Enrichment Engine Logo (Generated via Nix) -->
-  <defs>
-  <linearGradient id="grad-agentic" x1="0%" y1="0%" x2="100%" y2="100%">
-  <stop offset="0%" stop-color="#d8b4fe" />
-  <stop offset="100%" stop-color="#7e22ce" />
-</linearGradient>
-      <linearGradient id="grad-brandCore" x1="0%" y1="0%" x2="100%" y2="100%">
-  <stop offset="0%" stop-color="#fdba74" />
-  <stop offset="100%" stop-color="#c2410c" />
-</linearGradient>
-      <linearGradient id="grad-compliance" x1="0%" y1="0%" x2="100%" y2="100%">
-  <stop offset="0%" stop-color="#fcd34d" />
-  <stop offset="100%" stop-color="#b45309" />
-</linearGradient>
-      <linearGradient id="grad-execution" x1="0%" y1="0%" x2="100%" y2="100%">
-  <stop offset="0%" stop-color="#67e8f9" />
-  <stop offset="100%" stop-color="#0891b2" />
-</linearGradient>
-      <linearGradient id="grad-financial" x1="0%" y1="0%" x2="100%" y2="100%">
-  <stop offset="0%" stop-color="#fda4af" />
-  <stop offset="100%" stop-color="#9f1239" />
-</linearGradient>
-      <linearGradient id="grad-frontend" x1="0%" y1="0%" x2="100%" y2="100%">
-  <stop offset="0%" stop-color="#5eead4" />
-  <stop offset="100%" stop-color="#0f766e" />
-</linearGradient>
-      <linearGradient id="grad-infrastructure" x1="0%" y1="0%" x2="100%" y2="100%">
-  <stop offset="0%" stop-color="#34d399" />
-  <stop offset="100%" stop-color="#064e3b" />
-</linearGradient>
-      <linearGradient id="grad-intelligence" x1="0%" y1="0%" x2="100%" y2="100%">
-  <stop offset="0%" stop-color="#34d399" />
-  <stop offset="100%" stop-color="#047857" />
-</linearGradient>
-      <linearGradient id="grad-platform" x1="0%" y1="0%" x2="100%" y2="100%">
-  <stop offset="0%" stop-color="#818cf8" />
-  <stop offset="100%" stop-color="#3730a3" />
-</linearGradient>
-      <linearGradient id="grad-tooling" x1="0%" y1="0%" x2="100%" y2="100%">
-  <stop offset="0%" stop-color="#94a3b8" />
-  <stop offset="100%" stop-color="#334155" />
-</linearGradient>
-  <radialGradient id="grad-core-glow" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
-    <stop offset="0%" stop-color="#ffffff" stop-opacity="0.3" />
-    <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
-  </radialGradient>
-</defs>
-
-  <g stroke-width="20" stroke-linecap="round">
-  <circle cx="256" cy="256" r="210" stroke="url(#grad-compliance)" stroke-opacity="0.15" />
-  <circle cx="256" cy="256" r="210" stroke="url(#grad-compliance)" stroke-opacity="0.8" stroke-dasharray="4 13.8" />
-  <path d="M256 46 A 210 210 0 0 1 340 65" stroke="url(#grad-compliance)" stroke-opacity="1.0" stroke-width="24" />
-  <path d="M172 65 A 210 210 0 0 1 256 46" stroke="url(#grad-brandCore)" stroke-opacity="1.0" stroke-width="24" />
-</g>
-<g stroke-width="14" stroke-linecap="round">
-  <path d="M256 111 A 145 145 0 0 1 401 256" stroke="url(#grad-compliance)" stroke-opacity="1.0" stroke-dasharray="100 15" />
-  <path d="M401 256 A 145 145 0 0 1 256 401" stroke="url(#grad-compliance)" stroke-opacity="0.5" stroke-dasharray="40 40" />
-  <path d="M256 401 A 145 145 0 0 1 111 256" stroke="url(#grad-brandCore)" stroke-opacity="0.8" stroke-dasharray="10 10 60 10" />
-</g>
-<g>
-  <circle cx="256" cy="256" r="85" stroke="url(#grad-compliance)" stroke-opacity="0.3" stroke-width="4" />
-  <circle cx="256" cy="256" r="25" fill="url(#grad-compliance)" fill-opacity="1.0" />
-  <g stroke="url(#grad-compliance)" stroke-opacity="1.0" stroke-width="10" stroke-linecap="round">
-    <path d="M256 256 L 256 180" />
-    <path d="M256 256 L 320 293" />
-    <path d="M256 256 L 192 293" />
-  </g>
-  <circle cx="256" cy="180" r="10" fill="url(#grad-compliance)" fill-opacity="1.0" />
-  <circle cx="320" cy="293" r="10" fill="url(#grad-brandCore)" fill-opacity="1.0" />
-  <circle cx="192" cy="293" r="10" fill="url(#grad-compliance)" fill-opacity="1.0" />
-</g>
-
-</svg>
-
-  </div>
-  <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem; color: #f59e0b">Enrichment Engine</h3>
-  <p style="font-size: 0.875rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: #94a3b8; margin-bottom: 0.5rem;">GRC VULNERABILITY MAPPING</p>
-  <p style="color: #cbd5e1; font-size: 0.875rem; margin-bottom: 1rem;">GRC vulnerability mapping and compliance enrichment engine</p>
-  <span style="display: inline-block; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; border: 1px solid currentColor; color: #f59e0b">
-    compliance
-  </span>
-</div>
-
-          <div 
-   class="project-card"
-   style="background-color: #0f172a; border-radius: 0.75rem; padding: 1.5rem; border-top-width: 4px; transition: all 200ms; border-top-color: #06b6d4">
-  <div style="width: 5rem; height: 5rem; margin-bottom: 1rem;">
-    <svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <!-- Skylet Logo (Generated via Nix) -->
-  <defs>
-  <linearGradient id="grad-agentic" x1="0%" y1="0%" x2="100%" y2="100%">
-  <stop offset="0%" stop-color="#d8b4fe" />
-  <stop offset="100%" stop-color="#7e22ce" />
-</linearGradient>
-      <linearGradient id="grad-brandCore" x1="0%" y1="0%" x2="100%" y2="100%">
-  <stop offset="0%" stop-color="#fdba74" />
-  <stop offset="100%" stop-color="#c2410c" />
-</linearGradient>
-      <linearGradient id="grad-compliance" x1="0%" y1="0%" x2="100%" y2="100%">
-  <stop offset="0%" stop-color="#fcd34d" />
-  <stop offset="100%" stop-color="#b45309" />
-</linearGradient>
-      <linearGradient id="grad-execution" x1="0%" y1="0%" x2="100%" y2="100%">
-  <stop offset="0%" stop-color="#67e8f9" />
-  <stop offset="100%" stop-color="#0891b2" />
-</linearGradient>
-      <linearGradient id="grad-financial" x1="0%" y1="0%" x2="100%" y2="100%">
-  <stop offset="0%" stop-color="#fda4af" />
-  <stop offset="100%" stop-color="#9f1239" />
-</linearGradient>
-      <linearGradient id="grad-frontend" x1="0%" y1="0%" x2="100%" y2="100%">
-  <stop offset="0%" stop-color="#5eead4" />
-  <stop offset="100%" stop-color="#0f766e" />
-</linearGradient>
-      <linearGradient id="grad-infrastructure" x1="0%" y1="0%" x2="100%" y2="100%">
-  <stop offset="0%" stop-color="#34d399" />
-  <stop offset="100%" stop-color="#064e3b" />
-</linearGradient>
-      <linearGradient id="grad-intelligence" x1="0%" y1="0%" x2="100%" y2="100%">
-  <stop offset="0%" stop-color="#34d399" />
-  <stop offset="100%" stop-color="#047857" />
-</linearGradient>
-      <linearGradient id="grad-platform" x1="0%" y1="0%" x2="100%" y2="100%">
-  <stop offset="0%" stop-color="#818cf8" />
-  <stop offset="100%" stop-color="#3730a3" />
-</linearGradient>
-      <linearGradient id="grad-tooling" x1="0%" y1="0%" x2="100%" y2="100%">
-  <stop offset="0%" stop-color="#94a3b8" />
-  <stop offset="100%" stop-color="#334155" />
-</linearGradient>
-  <radialGradient id="grad-core-glow" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
-    <stop offset="0%" stop-color="#ffffff" stop-opacity="0.3" />
-    <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
-  </radialGradient>
-</defs>
-
-  <g stroke-width="24" stroke-linecap="round">
-  <circle cx="256" cy="256" r="210" stroke="url(#grad-execution)" stroke-opacity="1.0" stroke-dasharray="80 20 120 30 60 40 140 20" />
-  <circle cx="256" cy="256" r="180" stroke="url(#grad-execution)" stroke-opacity="0.5" stroke-dasharray="100 40 60 20 160 50" />
-</g>
-<g stroke-width="16" stroke-linecap="round">
-  <circle cx="256" cy="256" r="145" stroke="url(#grad-execution)" stroke-opacity="0.8" stroke-dasharray="40 15" />
-  <circle cx="256" cy="256" r="115" stroke="url(#grad-execution)" stroke-opacity="0.3" stroke-dasharray="80 40" />
-</g>
-<circle cx="256" cy="256" r="85" stroke="url(#grad-execution)" stroke-opacity="1.0" stroke-width="18" stroke-dasharray="120 30" stroke-linecap="round" />
-<circle cx="256" cy="256" r="30" fill="url(#grad-execution)" fill-opacity="0.8" />
-
-</svg>
-
-  </div>
-  <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem; color: #06b6d4">Skylet</h3>
-  <p style="font-size: 0.875rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: #94a3b8; margin-bottom: 0.5rem;">PLUGGABLE AGENT RUNTIME</p>
-  <p style="color: #cbd5e1; font-size: 0.875rem; margin-bottom: 1rem;">Secure, extensible plugin runtime for autonomous agents and microservices</p>
-  <span style="display: inline-block; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; border: 1px solid currentColor; color: #06b6d4">
-    execution
-  </span>
-</div>
-
-          <div 
-   class="project-card"
-   style="background-color: #0f172a; border-radius: 0.75rem; padding: 1.5rem; border-top-width: 4px; transition: all 200ms; border-top-color: #f59e0b">
-  <div style="width: 5rem; height: 5rem; margin-bottom: 1rem;">
-    <svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <!-- Transparenz Server Logo (Generated via Nix) -->
-  <defs>
-  <linearGradient id="grad-agentic" x1="0%" y1="0%" x2="100%" y2="100%">
-  <stop offset="0%" stop-color="#d8b4fe" />
-  <stop offset="100%" stop-color="#7e22ce" />
-</linearGradient>
-      <linearGradient id="grad-brandCore" x1="0%" y1="0%" x2="100%" y2="100%">
-  <stop offset="0%" stop-color="#fdba74" />
-  <stop offset="100%" stop-color="#c2410c" />
-</linearGradient>
-      <linearGradient id="grad-compliance" x1="0%" y1="0%" x2="100%" y2="100%">
-  <stop offset="0%" stop-color="#fcd34d" />
-  <stop offset="100%" stop-color="#b45309" />
-</linearGradient>
-      <linearGradient id="grad-execution" x1="0%" y1="0%" x2="100%" y2="100%">
-  <stop offset="0%" stop-color="#67e8f9" />
-  <stop offset="100%" stop-color="#0891b2" />
-</linearGradient>
-      <linearGradient id="grad-financial" x1="0%" y1="0%" x2="100%" y2="100%">
-  <stop offset="0%" stop-color="#fda4af" />
-  <stop offset="100%" stop-color="#9f1239" />
-</linearGradient>
-      <linearGradient id="grad-frontend" x1="0%" y1="0%" x2="100%" y2="100%">
-  <stop offset="0%" stop-color="#5eead4" />
-  <stop offset="100%" stop-color="#0f766e" />
-</linearGradient>
-      <linearGradient id="grad-infrastructure" x1="0%" y1="0%" x2="100%" y2="100%">
-  <stop offset="0%" stop-color="#34d399" />
-  <stop offset="100%" stop-color="#064e3b" />
-</linearGradient>
-      <linearGradient id="grad-intelligence" x1="0%" y1="0%" x2="100%" y2="100%">
-  <stop offset="0%" stop-color="#34d399" />
-  <stop offset="100%" stop-color="#047857" />
-</linearGradient>
-      <linearGradient id="grad-platform" x1="0%" y1="0%" x2="100%" y2="100%">
-  <stop offset="0%" stop-color="#818cf8" />
-  <stop offset="100%" stop-color="#3730a3" />
-</linearGradient>
-      <linearGradient id="grad-tooling" x1="0%" y1="0%" x2="100%" y2="100%">
-  <stop offset="0%" stop-color="#94a3b8" />
-  <stop offset="100%" stop-color="#334155" />
-</linearGradient>
-  <radialGradient id="grad-core-glow" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
-    <stop offset="0%" stop-color="#ffffff" stop-opacity="0.3" />
-    <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
-  </radialGradient>
-</defs>
-
-  <g stroke-width="22" stroke-linecap="round">
-  <path d="M256 46 A 210 210 0 0 1 361 74" stroke="url(#grad-compliance)" stroke-opacity="1.0" /> 
-  <path d="M394 95 A 210 210 0 0 1 454 180" stroke="url(#grad-compliance)" stroke-opacity="0.8" /> 
-  <path d="M464 220 A 210 210 0 0 1 464 292" stroke="url(#grad-compliance)" stroke-opacity="0.5" />
-  <path d="M454 332 A 210 210 0 0 1 394 417" stroke="url(#grad-compliance)" stroke-opacity="1.0" /> 
-  <path d="M361 438 A 210 210 0 0 1 256 466" stroke="url(#grad-brandCore)" stroke-opacity="0.8" /> 
-  <path d="M210 462 A 210 210 0 0 1 118 420" stroke="url(#grad-compliance)" stroke-opacity="0.3" /> 
-  <path d="M85 390 A 210 210 0 0 1 50 300" stroke="url(#grad-compliance)" stroke-opacity="1.0" /> 
-  <path d="M46 256 A 210 210 0 0 1 58 185" stroke="url(#grad-compliance)" stroke-opacity="0.8" /> 
-  <path d="M82 140 A 210 210 0 0 1 151 74" stroke="url(#grad-compliance)" stroke-opacity="0.5" /> 
-  <path d="M195 54 A 210 210 0 0 1 230 48" stroke="url(#grad-compliance)" stroke-opacity="1.0" /> 
-</g>
-<g stroke-width="14" stroke-linecap="round">
-  <circle cx="256" cy="256" r="145" stroke="url(#grad-compliance)" stroke-opacity="0.15" />
-  <path d="M256 111 A 145 145 0 0 1 401 256" stroke="url(#grad-compliance)" stroke-opacity="0.8" stroke-dasharray="20 15 60 10" />
-  <path d="M111 256 A 145 145 0 0 1 256 111" stroke="url(#grad-brandCore)" stroke-opacity="0.5" stroke-dasharray="40 20" />
-  <path d="M256 401 A 145 145 0 0 1 111 256" stroke="url(#grad-compliance)" stroke-opacity="0.8" stroke-dasharray="80 30" />
-</g>
-<g>
-  <circle cx="256" cy="256" r="85" stroke="url(#grad-compliance)" stroke-opacity="0.5" stroke-width="18" stroke-dasharray="12 18" stroke-linecap="round" />
-  <rect x="236" y="210" width="40" height="92" rx="20" stroke="url(#grad-compliance)" stroke-opacity="1.0" stroke-width="8" />
-  <rect x="210" y="236" width="92" height="40" rx="20" stroke="url(#grad-compliance)" stroke-opacity="0.5" stroke-width="6" />
-  <circle cx="256" cy="256" r="85" fill="url(#grad-core-glow)" />
-  <circle cx="256" cy="256" r="12" fill="url(#grad-compliance)" fill-opacity="1.0" />
-</g>
-
-</svg>
-
-  </div>
-  <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem; color: #f59e0b">Transparenz</h3>
-  <p style="font-size: 0.875rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: #94a3b8; margin-bottom: 0.5rem;">EU CRA COMPLIANCE BACKEND</p>
-  <p style="color: #cbd5e1; font-size: 0.875rem; margin-bottom: 1rem;">EU CRA compliance backend for software transparency and security</p>
-  <span style="display: inline-block; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; border: 1px solid currentColor; color: #f59e0b">
-    compliance
-  </span>
-</div>
-
-          <div 
-   class="project-card"
-   style="background-color: #0f172a; border-radius: 0.75rem; padding: 1.5rem; border-top-width: 4px; transition: all 200ms; border-top-color: #64748b">
-  <div style="width: 5rem; height: 5rem; margin-bottom: 1rem;">
-    <svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <!-- Transparenz CLI Logo (Generated via Nix) -->
-  <defs>
-  <linearGradient id="grad-agentic" x1="0%" y1="0%" x2="100%" y2="100%">
-  <stop offset="0%" stop-color="#d8b4fe" />
-  <stop offset="100%" stop-color="#7e22ce" />
-</linearGradient>
-      <linearGradient id="grad-brandCore" x1="0%" y1="0%" x2="100%" y2="100%">
-  <stop offset="0%" stop-color="#fdba74" />
-  <stop offset="100%" stop-color="#c2410c" />
-</linearGradient>
-      <linearGradient id="grad-compliance" x1="0%" y1="0%" x2="100%" y2="100%">
-  <stop offset="0%" stop-color="#fcd34d" />
-  <stop offset="100%" stop-color="#b45309" />
-</linearGradient>
-      <linearGradient id="grad-execution" x1="0%" y1="0%" x2="100%" y2="100%">
-  <stop offset="0%" stop-color="#67e8f9" />
-  <stop offset="100%" stop-color="#0891b2" />
-</linearGradient>
-      <linearGradient id="grad-financial" x1="0%" y1="0%" x2="100%" y2="100%">
-  <stop offset="0%" stop-color="#fda4af" />
-  <stop offset="100%" stop-color="#9f1239" />
-</linearGradient>
-      <linearGradient id="grad-frontend" x1="0%" y1="0%" x2="100%" y2="100%">
-  <stop offset="0%" stop-color="#5eead4" />
-  <stop offset="100%" stop-color="#0f766e" />
-</linearGradient>
-      <linearGradient id="grad-infrastructure" x1="0%" y1="0%" x2="100%" y2="100%">
-  <stop offset="0%" stop-color="#34d399" />
-  <stop offset="100%" stop-color="#064e3b" />
-</linearGradient>
-      <linearGradient id="grad-intelligence" x1="0%" y1="0%" x2="100%" y2="100%">
-  <stop offset="0%" stop-color="#34d399" />
-  <stop offset="100%" stop-color="#047857" />
-</linearGradient>
-      <linearGradient id="grad-platform" x1="0%" y1="0%" x2="100%" y2="100%">
-  <stop offset="0%" stop-color="#818cf8" />
-  <stop offset="100%" stop-color="#3730a3" />
-</linearGradient>
-      <linearGradient id="grad-tooling" x1="0%" y1="0%" x2="100%" y2="100%">
-  <stop offset="0%" stop-color="#94a3b8" />
-  <stop offset="100%" stop-color="#334155" />
-</linearGradient>
-  <radialGradient id="grad-core-glow" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
-    <stop offset="0%" stop-color="#ffffff" stop-opacity="0.3" />
-    <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
-  </radialGradient>
-</defs>
-
-  <g stroke-width="22" stroke-linecap="round">
-  <path d="M256 46 A 210 210 0 0 1 444 160" stroke="url(#grad-compliance)" stroke-opacity="1.0" />
-  <path d="M464 220 A 210 210 0 0 1 380 420" stroke="url(#grad-tooling)" stroke-opacity="0.8" />
-  <path d="M330 448 A 210 210 0 0 1 210 462" stroke="url(#grad-compliance)" stroke-opacity="0.5" />
-  <path d="M160 448 A 210 210 0 0 1 55 330" stroke="url(#grad-brandCore)" stroke-opacity="0.8" />
-  <path d="M46 256 A 210 210 0 0 1 90 140" stroke="url(#grad-tooling)" stroke-opacity="1.0" />
-  <path d="M125 90 A 210 210 0 0 1 210 54" stroke="url(#grad-compliance)" stroke-opacity="0.3" />
-</g>
-<g stroke-width="14" stroke-linecap="round">
-  <path d="M256 111 A 145 145 0 0 1 401 256" stroke="url(#grad-compliance)" stroke-opacity="0.8" stroke-dasharray="60 20" />
-  <path d="M111 256 A 145 145 0 0 1 256 111" stroke="url(#grad-tooling)" stroke-opacity="1.0" stroke-dasharray="10 10 40 10" />
-  <path d="M256 401 A 145 145 0 0 1 111 256" stroke="url(#grad-brandCore)" stroke-opacity="0.5" stroke-dasharray="80 30" />
-</g>
-<g>
-  <circle cx="256" cy="256" r="85" stroke="url(#grad-compliance)" stroke-opacity="0.5" stroke-width="18" stroke-dasharray="15 20" stroke-linecap="round" />
-  <path d="M210 256 L 240 286 L 310 216" stroke="url(#grad-compliance)" stroke-opacity="1.0" stroke-width="14" stroke-linecap="round" stroke-linejoin="round" />
-  <circle cx="256" cy="256" r="85" fill="url(#grad-core-glow)" />
-</g>
-
-</svg>
-
-  </div>
-  <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem; color: #64748b">Transparenz CLI</h3>
-  <p style="font-size: 0.875rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: #94a3b8; margin-bottom: 0.5rem;">BSI TR-03183-2 SBOM TOOLING</p>
-  <p style="color: #cbd5e1; font-size: 0.875rem; margin-bottom: 1rem;">Command-line tool for EU compliance SBOM generation and verification</p>
-  <span style="display: inline-block; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; border: 1px solid currentColor; color: #64748b">
-    tooling
-  </span>
-</div>
-
+        {wrapper_start}
+           style="background-color: #0f172a; border-radius: 0.75rem; padding: 1.5rem; 
+                  border-top: 4px solid {color}; transition: all 200ms;"
+           onmouseover="this.style.transform='translateY(-0.25rem)'; this.style.boxShadow='0 20px 25px -5px rgba(0,0,0,0.1)'"
+           onmouseout="this.style.transform=''; this.style.boxShadow=''">
+          <div style="width: 5rem; height: 5rem; margin-bottom: 1rem;">
+            <!-- SVG logo would be embedded here -->
+          </div>
+          <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem; color: {color};">{title}</h3>
+          <p style="font-size: 0.875rem; font-weight: 600; letter-spacing: 0.05em; 
+                    text-transform: uppercase; color: #94a3b8; margin-bottom: 0.5rem;">{tagline}</p>
+          <p style="color: #cbd5e1; font-size: 0.875rem; margin-bottom: 1rem;">{desc}</p>
+          <span style="display: inline-block; padding: 0.25rem 0.75rem; border-radius: 9999px; 
+                       font-size: 0.75rem; font-weight: 600; text-transform: uppercase; 
+                       letter-spacing: 0.05em; border: 1px solid currentColor; color: {color};">
+            open-source
+          </span>
+        {wrapper_end}
         </div>
       </div>
     </section>
