@@ -1,173 +1,24 @@
 <!doctype html>
-<html lang="en-GB">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <title>vincents.ai - Tooling for the agentic age</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-      body { margin: 0; font-family: system-ui, sans-serif; }
-      .project-card {
-        background: #0f172a; border-radius: 0.75rem; padding: 1.5rem;
-        border-top: 4px solid #fb923c; transition: all 200ms;
-        text-decoration: none; color: inherit; display: block;
-      }
-      .project-card:hover {
-        transform: translateY(-0.25rem);
-        box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1);
-      }
-      .project-title { font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem; }
-      .project-tagline { font-size: 0.875rem; font-weight: 600; letter-spacing: 0.05em;
-        text-transform: uppercase; color: #94a3b8; margin-bottom: 0.5rem; }
-      .project-desc { color: #cbd5e1; font-size: 0.875rem; margin-bottom: 1rem; }
-      .project-badge { display: inline-block; padding: 0.25rem 0.75rem; border-radius: 9999px;
-        font-size: 0.75rem; font-weight: 600; text-transform: uppercase;
-        letter-spacing: 0.05em; border: 1px solid currentColor; }
-    </style>
-  </head>
-  <body class="min-h-screen bg-slate-950 text-white">
-    <header class="bg-gradient-to-r from-slate-900 to-slate-950 py-20 px-4">
-      <div class="container mx-auto text-center">
-        <div class="flex justify-center mb-6">
-          <svg width="200" height="80" viewBox="0 0 200 80">
-            <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle"
-                  font-size="32" font-weight="bold" fill="url(#grad1)">vincents.ai</text>
-            <defs>
-              <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stop-color="#fb923c" />
-                <stop offset="100%" stop-color="#a855f7" />
-              </linearGradient>
-            </defs>
-          </svg>
-        </div>
-        <h1 class="text-6xl font-extrabold bg-gradient-to-r from-orange-400 via-purple-500 to-orange-400 bg-clip-text text-transparent">
-          vincents.ai
-        </h1>
-        <p class="text-xl text-slate-400 mt-4">Tooling for the agentic age</p>
-      </div>
-    </header>
-    <section class="py-16 px-4">
-      <div class="container mx-auto">
-        <h2 class="text-4xl font-bold text-center mb-4">Projects</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-
-        <a href="/projects/adp.html" class="block project-card">
-          <div class="project-card-inner">
-            <div class="project-logo"><!-- SVG logo --></div>
-            <h3 class="project-title" style="color: #4f46e5;">ADP</h3>
-            <p class="project-tagline">AGENTIC DEVELOPMENT PLATFORM</p>
-            <p class="project-desc">Commercial Agentic Development Platform - vertically integrated Git hosting and AI agent orchestration. Built on agentic-repos (open-core). Enterprise modules: backup & recovery (AES-256-GCM), compliance (DORA/NIS2/GDPR/HIPAA), replication, CI/CD, security scanning, webhooks, scaling.</p>
-            <span class="project-badge" style="color: #4f46e5; border-color: #4f46e5;">platform</span>
-          </div>
-        </a>
-        
-
-        <a href="https://github.com/vincents-ai/agentic-loop" target="_blank" rel="noopener noreferrer" class="block project-card">
-          <div class="project-card-inner">
-            <div class="project-logo"><!-- SVG logo --></div>
-            <h3 class="project-title" style="color: #a855f7;">Agentic Loop</h3>
-            <p class="project-tagline">TRAIT-FIRST AI AGENT LOOP</p>
-            <p class="project-desc">Trait-first AI agent loop system with 14+ crates: WASM plugins, per-project sharded storage, custom Gherkin workflow engine, and engram-evo self-improvement. Features: health monitoring, cost optimization, meta-cognitive reflection.</p>
-            <span class="project-badge" style="color: #a855f7; border-color: #a855f7;">open-source</span>
-          </div>
-        </a>
-        
-
-        <a href="https://github.com/vincents-ai/agentic-repos" target="_blank" rel="noopener noreferrer" class="block project-card">
-          <div class="project-card-inner">
-            <div class="project-logo"><!-- SVG logo --></div>
-            <h3 class="project-title" style="color: #059669;">Agentic Repos</h3>
-            <p class="project-tagline">OPEN-CORE GIT SERVER</p>
-            <p class="project-desc">Open-core AGPL Git server - core of ADP. Provides Git hosting (SSH :2222, HTTP :8090), Git LFS with S3 backend, SSH auth via git refs, REST API, RBAC, and Skylet v2 plugin interface.</p>
-            <span class="project-badge" style="color: #059669; border-color: #059669;">open-source</span>
-          </div>
-        </a>
-        
-
-        <a href="/projects/billing-auth-service.html" class="block project-card">
-          <div class="project-card-inner">
-            <div class="project-logo"><!-- SVG logo --></div>
-            <h3 class="project-title" style="color: #e11d48;">Billing Auth Service</h3>
-            <p class="project-tagline">SECURE FINANCIAL GATEKEEPER</p>
-            <p class="project-desc">Secure authentication service for financial operations and billing. Part of the financial compliance stack for Vincents.ai platform services.</p>
-            <span class="project-badge" style="color: #e11d48; border-color: #e11d48;">financial</span>
-          </div>
-        </a>
-        
-
-        <a href="/projects/billing-middleware.html" class="block project-card">
-          <div class="project-card-inner">
-            <div class="project-logo"><!-- SVG logo --></div>
-            <h3 class="project-title" style="color: #e11d48;">Billing Middleware</h3>
-            <p class="project-tagline">ROUTING & COST OPTIMIZATION</p>
-            <p class="project-desc">Multi-provider billing routing middleware with cost optimization, tax calculation, compliance enforcement. Routes transactions to lowest-cost provider (Stripe, Cleverbridge) with real API integrations.</p>
-            <span class="project-badge" style="color: #e11d48; border-color: #e11d48;">financial</span>
-          </div>
-        </a>
-        
-
-        <a href="https://github.com/vincents-ai/engram" target="_blank" rel="noopener noreferrer" class="block project-card">
-          <div class="project-card-inner">
-            <div class="project-logo"><!-- SVG logo --></div>
-            <h3 class="project-title" style="color: #10b981;">Engram</h3>
-            <p class="project-tagline">DISTRIBUTED AI MEMORY LAYER</p>
-            <p class="project-desc">Distributed memory system for AI agents and human operators. Acts as a second brain - capturing context, plans, reasoning chains, and knowledge alongside code. Git-native storage in refs/engram/.</p>
-            <span class="project-badge" style="color: #10b981; border-color: #10b981;">open-source</span>
-          </div>
-        </a>
-        
-
-        <a href="https://github.com/vincents-ai/enrichment-engine" target="_blank" rel="noopener noreferrer" class="block project-card">
-          <div class="project-card-inner">
-            <div class="project-logo"><!-- SVG logo --></div>
-            <h3 class="project-title" style="color: #f59e0b;">Enrichment Engine</h3>
-            <p class="project-tagline">GRC VULNERABILITY MAPPING</p>
-            <p class="project-desc">GRC enrichment engine for vulnerability-to-compliance control mapping. Part of Transparenz ecosystem. Maps CVEs to 74 GRC providers via CWE matching - produces auditable traceability between vulnerabilities and regulatory requirements.</p>
-            <span class="project-badge" style="color: #f59e0b; border-color: #f59e0b;">open-source</span>
-          </div>
-        </a>
-        
-
-        <a href="https://github.com/vincents-ai/skylet" target="_blank" rel="noopener noreferrer" class="block project-card">
-          <div class="project-card-inner">
-            <div class="project-logo"><!-- SVG logo --></div>
-            <h3 class="project-title" style="color: #06b6d4;">Skylet</h3>
-            <p class="project-tagline">PLUGGABLE AGENT RUNTIME</p>
-            <p class="project-desc">Unified sandbox isolation crate for Vincents.ai - supports Firecracker VMs and containers. Plugin runtime for autonomous agents and microservices.</p>
-            <span class="project-badge" style="color: #06b6d4; border-color: #06b6d4;">open-source</span>
-          </div>
-        </a>
-        
-
-        <a href="https://github.com/vincents-ai/transparenz" target="_blank" rel="noopener noreferrer" class="block project-card">
-          <div class="project-card-inner">
-            <div class="project-logo"><!-- SVG logo --></div>
-            <h3 class="project-title" style="color: #f59e0b;">Transparenz</h3>
-            <p class="project-tagline">EU CRA COMPLIANCE BACKEND</p>
-            <p class="project-desc">CLI tool for generating, enriching, validating, and submitting BSI TR-03183-2 compliant SBOMs. Features: CycloneDX/SPDX output, SHA-512 hashes, supplier detection, PostgreSQL persistence, Grype vulnerability scanning.</p>
-            <span class="project-badge" style="color: #f59e0b; border-color: #f59e0b;">open-source</span>
-          </div>
-        </a>
-        
-
-        <a href="https://github.com/vincents-ai/transparenz-cli" target="_blank" rel="noopener noreferrer" class="block project-card">
-          <div class="project-card-inner">
-            <div class="project-logo"><!-- SVG logo --></div>
-            <h3 class="project-title" style="color: #64748b;">Transparenz CLI</h3>
-            <p class="project-tagline">BSI TR-03183-2 SBOM TOOLING</p>
-            <p class="project-desc">Command-line tool for EU compliance SBOM generation and verification. Standalone vulnerability scanning via native Grype library with compliance scoring (bsi-check).</p>
-            <span class="project-badge" style="color: #64748b; border-color: #64748b;">open-source</span>
-          </div>
-        </a>
-        
-        </div>
-      </div>
-    </section>
-    <footer class="border-t border-slate-800 py-8 px-4">
-      <div class="container mx-auto text-center text-slate-500">
-        <p>&copy; 2026 vincents.ai - All rights reserved</p>
-      </div>
-    </footer>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>website</title>
+    <script type="module" crossorigin src="/assets/index-fPAqlNYc.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-DNgqCu-p.css">
+  <!--1n46o8q--><meta name="description" content="Tooling for the agentic age"/><!----><title>vincents.ai - Tooling for the agentic age</title>
+</head>
+  <body>
+    <div id="app"><!--[--><header class="bg-gradient-to-r from-slate-900 to-slate-950 py-20 px-4"><div class="container mx-auto text-center"><div class="flex justify-center mb-6"><!----><svg width="200" height="80" viewBox="0 0 200 80">
+    <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle"
+          font-size="32" font-weight="bold" fill="url(#grad1)">vincents.ai</text>
+    <defs>
+      <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#fb923c" />
+        <stop offset="100%" stop-color="#a855f7" />
+      </linearGradient>
+    </defs>
+  </svg><!----></div> <h1 class="text-6xl font-extrabold bg-gradient-to-r from-orange-400 via-purple-500 to-orange-400 bg-clip-text text-transparent">vincents.ai</h1> <p class="text-xl text-slate-400 mt-4">Tooling for the agentic age</p></div></header> <section class="py-16 px-4"><div class="container mx-auto"><h2 class="text-4xl font-bold text-center mb-12">Projects</h2> <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"><!--[--><a href="/projects/adp.html" class="block no-underline"><div data-slot="card" data-size="default" class="ring-foreground/10 bg-card text-card-foreground gap-4 overflow-hidden rounded-xl py-4 text-sm ring-1 has-data-[slot=card-footer]:pb-0 has-[>img:first-child]:pt-0 data-[size=sm]:gap-3 data-[size=sm]:py-3 data-[size=sm]:has-data-[slot=card-footer]:pb-0 *:[img:first-child]:rounded-t-xl *:[img:last-child]:rounded-b-xl group/card flex flex-col border-t-4 transition-all duration-200 hover:-translate-y-1 hover:shadow-xl" style="border-top-color: #4f46e5;"><div class="p-6"><h3 class="text-2xl font-bold mb-2" style="color: #4f46e5">ADP</h3> <p class="text-sm font-semibold tracking-wider uppercase text-slate-400 mb-2">AGENTIC DEVELOPMENT PLATFORM</p> <p class="text-slate-300 text-sm mb-4">Commercial Agentic Development Platform - vertically integrated Git hosting and AI agent orchestration. Built on agentic-repos (open-core). Enterprise modules: backup &amp; recovery (AES-256-GCM), compliance (DORA/NIS2/GDPR/HIPAA), replication, CI/CD, security scanning, webhooks, scaling.</p> <!----><span data-slot="badge" class="h-5 gap-1 rounded-4xl border px-2 py-0.5 text-xs font-medium has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 [&amp;>svg]:size-3! focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive group/badge inline-flex w-fit shrink-0 items-center justify-center overflow-hidden whitespace-nowrap transition-colors focus-visible:ring-[3px] [&amp;>svg]:pointer-events-none border-border text-foreground [a]:hover:bg-muted [a]:hover:text-muted-foreground" style="color: #4f46e5; border-color: #4f46e5;"><!---->platform<!----><!----></span><!----><!----></div><!----></div><!----></a><a href="https://github.com/vincents-ai/agentic-loop" target="_blank" rel="noopener noreferrer" class="block no-underline"><div data-slot="card" data-size="default" class="ring-foreground/10 bg-card text-card-foreground gap-4 overflow-hidden rounded-xl py-4 text-sm ring-1 has-data-[slot=card-footer]:pb-0 has-[>img:first-child]:pt-0 data-[size=sm]:gap-3 data-[size=sm]:py-3 data-[size=sm]:has-data-[slot=card-footer]:pb-0 *:[img:first-child]:rounded-t-xl *:[img:last-child]:rounded-b-xl group/card flex flex-col border-t-4 transition-all duration-200 hover:-translate-y-1 hover:shadow-xl" style="border-top-color: #a855f7;"><div class="p-6"><h3 class="text-2xl font-bold mb-2" style="color: #a855f7">Agentic Loop</h3> <p class="text-sm font-semibold tracking-wider uppercase text-slate-400 mb-2">TRAIT-FIRST AI AGENT LOOP</p> <p class="text-slate-300 text-sm mb-4">Trait-first AI agent loop system with 14+ crates: WASM plugins, per-project sharded storage, custom Gherkin workflow engine, and engram-evo self-improvement. Features: health monitoring, cost optimization, meta-cognitive reflection.</p> <!----><span data-slot="badge" class="h-5 gap-1 rounded-4xl border px-2 py-0.5 text-xs font-medium has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 [&amp;>svg]:size-3! focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive group/badge inline-flex w-fit shrink-0 items-center justify-center overflow-hidden whitespace-nowrap transition-colors focus-visible:ring-[3px] [&amp;>svg]:pointer-events-none border-border text-foreground [a]:hover:bg-muted [a]:hover:text-muted-foreground" style="color: #a855f7; border-color: #a855f7;"><!---->open-source<!----><!----></span><!----><!----></div><!----></div><!----></a><a href="https://github.com/vincents-ai/agentic-repos" target="_blank" rel="noopener noreferrer" class="block no-underline"><div data-slot="card" data-size="default" class="ring-foreground/10 bg-card text-card-foreground gap-4 overflow-hidden rounded-xl py-4 text-sm ring-1 has-data-[slot=card-footer]:pb-0 has-[>img:first-child]:pt-0 data-[size=sm]:gap-3 data-[size=sm]:py-3 data-[size=sm]:has-data-[slot=card-footer]:pb-0 *:[img:first-child]:rounded-t-xl *:[img:last-child]:rounded-b-xl group/card flex flex-col border-t-4 transition-all duration-200 hover:-translate-y-1 hover:shadow-xl" style="border-top-color: #059669;"><div class="p-6"><h3 class="text-2xl font-bold mb-2" style="color: #059669">Agentic Repos</h3> <p class="text-sm font-semibold tracking-wider uppercase text-slate-400 mb-2">OPEN-CORE GIT SERVER</p> <p class="text-slate-300 text-sm mb-4">Open-core AGPL Git server - core of ADP. Provides Git hosting (SSH :2222, HTTP :8090), Git LFS with S3 backend, SSH auth via git refs, REST API, RBAC, and Skylet v2 plugin interface.</p> <!----><span data-slot="badge" class="h-5 gap-1 rounded-4xl border px-2 py-0.5 text-xs font-medium has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 [&amp;>svg]:size-3! focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive group/badge inline-flex w-fit shrink-0 items-center justify-center overflow-hidden whitespace-nowrap transition-colors focus-visible:ring-[3px] [&amp;>svg]:pointer-events-none border-border text-foreground [a]:hover:bg-muted [a]:hover:text-muted-foreground" style="color: #059669; border-color: #059669;"><!---->open-source<!----><!----></span><!----><!----></div><!----></div><!----></a><a href="/projects/billing-auth-service.html" class="block no-underline"><div data-slot="card" data-size="default" class="ring-foreground/10 bg-card text-card-foreground gap-4 overflow-hidden rounded-xl py-4 text-sm ring-1 has-data-[slot=card-footer]:pb-0 has-[>img:first-child]:pt-0 data-[size=sm]:gap-3 data-[size=sm]:py-3 data-[size=sm]:has-data-[slot=card-footer]:pb-0 *:[img:first-child]:rounded-t-xl *:[img:last-child]:rounded-b-xl group/card flex flex-col border-t-4 transition-all duration-200 hover:-translate-y-1 hover:shadow-xl" style="border-top-color: #e11d48;"><div class="p-6"><h3 class="text-2xl font-bold mb-2" style="color: #e11d48">Billing Auth Service</h3> <p class="text-sm font-semibold tracking-wider uppercase text-slate-400 mb-2">SECURE FINANCIAL GATEKEEPER</p> <p class="text-slate-300 text-sm mb-4">Secure authentication service for financial operations and billing. Part of the financial compliance stack for Vincents.ai platform services.</p> <!----><span data-slot="badge" class="h-5 gap-1 rounded-4xl border px-2 py-0.5 text-xs font-medium has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 [&amp;>svg]:size-3! focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive group/badge inline-flex w-fit shrink-0 items-center justify-center overflow-hidden whitespace-nowrap transition-colors focus-visible:ring-[3px] [&amp;>svg]:pointer-events-none border-border text-foreground [a]:hover:bg-muted [a]:hover:text-muted-foreground" style="color: #e11d48; border-color: #e11d48;"><!---->financial<!----><!----></span><!----><!----></div><!----></div><!----></a><a href="/projects/billing-middleware.html" class="block no-underline"><div data-slot="card" data-size="default" class="ring-foreground/10 bg-card text-card-foreground gap-4 overflow-hidden rounded-xl py-4 text-sm ring-1 has-data-[slot=card-footer]:pb-0 has-[>img:first-child]:pt-0 data-[size=sm]:gap-3 data-[size=sm]:py-3 data-[size=sm]:has-data-[slot=card-footer]:pb-0 *:[img:first-child]:rounded-t-xl *:[img:last-child]:rounded-b-xl group/card flex flex-col border-t-4 transition-all duration-200 hover:-translate-y-1 hover:shadow-xl" style="border-top-color: #e11d48;"><div class="p-6"><h3 class="text-2xl font-bold mb-2" style="color: #e11d48">Billing Middleware</h3> <p class="text-sm font-semibold tracking-wider uppercase text-slate-400 mb-2">ROUTING &amp; COST OPTIMIZATION</p> <p class="text-slate-300 text-sm mb-4">Multi-provider billing routing middleware with cost optimization, tax calculation, compliance enforcement. Routes transactions to lowest-cost provider (Stripe, Cleverbridge) with real API integrations.</p> <!----><span data-slot="badge" class="h-5 gap-1 rounded-4xl border px-2 py-0.5 text-xs font-medium has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 [&amp;>svg]:size-3! focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive group/badge inline-flex w-fit shrink-0 items-center justify-center overflow-hidden whitespace-nowrap transition-colors focus-visible:ring-[3px] [&amp;>svg]:pointer-events-none border-border text-foreground [a]:hover:bg-muted [a]:hover:text-muted-foreground" style="color: #e11d48; border-color: #e11d48;"><!---->financial<!----><!----></span><!----><!----></div><!----></div><!----></a><a href="https://github.com/vincents-ai/engram" target="_blank" rel="noopener noreferrer" class="block no-underline"><div data-slot="card" data-size="default" class="ring-foreground/10 bg-card text-card-foreground gap-4 overflow-hidden rounded-xl py-4 text-sm ring-1 has-data-[slot=card-footer]:pb-0 has-[>img:first-child]:pt-0 data-[size=sm]:gap-3 data-[size=sm]:py-3 data-[size=sm]:has-data-[slot=card-footer]:pb-0 *:[img:first-child]:rounded-t-xl *:[img:last-child]:rounded-b-xl group/card flex flex-col border-t-4 transition-all duration-200 hover:-translate-y-1 hover:shadow-xl" style="border-top-color: #10b981;"><div class="p-6"><h3 class="text-2xl font-bold mb-2" style="color: #10b981">Engram</h3> <p class="text-sm font-semibold tracking-wider uppercase text-slate-400 mb-2">DISTRIBUTED AI MEMORY LAYER</p> <p class="text-slate-300 text-sm mb-4">Distributed memory system for AI agents and human operators. Acts as a second brain - capturing context, plans, reasoning chains, and knowledge alongside code. Git-native storage in refs/engram/.</p> <!----><span data-slot="badge" class="h-5 gap-1 rounded-4xl border px-2 py-0.5 text-xs font-medium has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 [&amp;>svg]:size-3! focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive group/badge inline-flex w-fit shrink-0 items-center justify-center overflow-hidden whitespace-nowrap transition-colors focus-visible:ring-[3px] [&amp;>svg]:pointer-events-none border-border text-foreground [a]:hover:bg-muted [a]:hover:text-muted-foreground" style="color: #10b981; border-color: #10b981;"><!---->open-source<!----><!----></span><!----><!----></div><!----></div><!----></a><a href="https://github.com/vincents-ai/enrichment-engine" target="_blank" rel="noopener noreferrer" class="block no-underline"><div data-slot="card" data-size="default" class="ring-foreground/10 bg-card text-card-foreground gap-4 overflow-hidden rounded-xl py-4 text-sm ring-1 has-data-[slot=card-footer]:pb-0 has-[>img:first-child]:pt-0 data-[size=sm]:gap-3 data-[size=sm]:py-3 data-[size=sm]:has-data-[slot=card-footer]:pb-0 *:[img:first-child]:rounded-t-xl *:[img:last-child]:rounded-b-xl group/card flex flex-col border-t-4 transition-all duration-200 hover:-translate-y-1 hover:shadow-xl" style="border-top-color: #f59e0b;"><div class="p-6"><h3 class="text-2xl font-bold mb-2" style="color: #f59e0b">Enrichment Engine</h3> <p class="text-sm font-semibold tracking-wider uppercase text-slate-400 mb-2">GRC VULNERABILITY MAPPING</p> <p class="text-slate-300 text-sm mb-4">GRC enrichment engine for vulnerability-to-compliance control mapping. Part of Transparenz ecosystem. Maps CVEs to 74 GRC providers via CWE matching - produces auditable traceability between vulnerabilities and regulatory requirements.</p> <!----><span data-slot="badge" class="h-5 gap-1 rounded-4xl border px-2 py-0.5 text-xs font-medium has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 [&amp;>svg]:size-3! focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive group/badge inline-flex w-fit shrink-0 items-center justify-center overflow-hidden whitespace-nowrap transition-colors focus-visible:ring-[3px] [&amp;>svg]:pointer-events-none border-border text-foreground [a]:hover:bg-muted [a]:hover:text-muted-foreground" style="color: #f59e0b; border-color: #f59e0b;"><!---->open-source<!----><!----></span><!----><!----></div><!----></div><!----></a><a href="https://github.com/vincents-ai/skylet" target="_blank" rel="noopener noreferrer" class="block no-underline"><div data-slot="card" data-size="default" class="ring-foreground/10 bg-card text-card-foreground gap-4 overflow-hidden rounded-xl py-4 text-sm ring-1 has-data-[slot=card-footer]:pb-0 has-[>img:first-child]:pt-0 data-[size=sm]:gap-3 data-[size=sm]:py-3 data-[size=sm]:has-data-[slot=card-footer]:pb-0 *:[img:first-child]:rounded-t-xl *:[img:last-child]:rounded-b-xl group/card flex flex-col border-t-4 transition-all duration-200 hover:-translate-y-1 hover:shadow-xl" style="border-top-color: #06b6d4;"><div class="p-6"><h3 class="text-2xl font-bold mb-2" style="color: #06b6d4">Skylet</h3> <p class="text-sm font-semibold tracking-wider uppercase text-slate-400 mb-2">PLUGGABLE AGENT RUNTIME</p> <p class="text-slate-300 text-sm mb-4">Unified sandbox isolation crate for Vincents.ai - supports Firecracker VMs and containers. Plugin runtime for autonomous agents and microservices.</p> <!----><span data-slot="badge" class="h-5 gap-1 rounded-4xl border px-2 py-0.5 text-xs font-medium has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 [&amp;>svg]:size-3! focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive group/badge inline-flex w-fit shrink-0 items-center justify-center overflow-hidden whitespace-nowrap transition-colors focus-visible:ring-[3px] [&amp;>svg]:pointer-events-none border-border text-foreground [a]:hover:bg-muted [a]:hover:text-muted-foreground" style="color: #06b6d4; border-color: #06b6d4;"><!---->open-source<!----><!----></span><!----><!----></div><!----></div><!----></a><a href="https://github.com/vincents-ai/transparenz" target="_blank" rel="noopener noreferrer" class="block no-underline"><div data-slot="card" data-size="default" class="ring-foreground/10 bg-card text-card-foreground gap-4 overflow-hidden rounded-xl py-4 text-sm ring-1 has-data-[slot=card-footer]:pb-0 has-[>img:first-child]:pt-0 data-[size=sm]:gap-3 data-[size=sm]:py-3 data-[size=sm]:has-data-[slot=card-footer]:pb-0 *:[img:first-child]:rounded-t-xl *:[img:last-child]:rounded-b-xl group/card flex flex-col border-t-4 transition-all duration-200 hover:-translate-y-1 hover:shadow-xl" style="border-top-color: #f59e0b;"><div class="p-6"><h3 class="text-2xl font-bold mb-2" style="color: #f59e0b">Transparenz</h3> <p class="text-sm font-semibold tracking-wider uppercase text-slate-400 mb-2">EU CRA COMPLIANCE BACKEND</p> <p class="text-slate-300 text-sm mb-4">CLI tool for generating, enriching, validating, and submitting BSI TR-03183-2 compliant SBOMs. Features: CycloneDX/SPDX output, SHA-512 hashes, supplier detection, PostgreSQL persistence, Grype vulnerability scanning.</p> <!----><span data-slot="badge" class="h-5 gap-1 rounded-4xl border px-2 py-0.5 text-xs font-medium has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 [&amp;>svg]:size-3! focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive group/badge inline-flex w-fit shrink-0 items-center justify-center overflow-hidden whitespace-nowrap transition-colors focus-visible:ring-[3px] [&amp;>svg]:pointer-events-none border-border text-foreground [a]:hover:bg-muted [a]:hover:text-muted-foreground" style="color: #f59e0b; border-color: #f59e0b;"><!---->open-source<!----><!----></span><!----><!----></div><!----></div><!----></a><a href="https://github.com/vincents-ai/transparenz-cli" target="_blank" rel="noopener noreferrer" class="block no-underline"><div data-slot="card" data-size="default" class="ring-foreground/10 bg-card text-card-foreground gap-4 overflow-hidden rounded-xl py-4 text-sm ring-1 has-data-[slot=card-footer]:pb-0 has-[>img:first-child]:pt-0 data-[size=sm]:gap-3 data-[size=sm]:py-3 data-[size=sm]:has-data-[slot=card-footer]:pb-0 *:[img:first-child]:rounded-t-xl *:[img:last-child]:rounded-b-xl group/card flex flex-col border-t-4 transition-all duration-200 hover:-translate-y-1 hover:shadow-xl" style="border-top-color: #64748b;"><div class="p-6"><h3 class="text-2xl font-bold mb-2" style="color: #64748b">Transparenz CLI</h3> <p class="text-sm font-semibold tracking-wider uppercase text-slate-400 mb-2">BSI TR-03183-2 SBOM TOOLING</p> <p class="text-slate-300 text-sm mb-4">Command-line tool for EU compliance SBOM generation and verification. Standalone vulnerability scanning via native Grype library with compliance scoring (bsi-check).</p> <!----><span data-slot="badge" class="h-5 gap-1 rounded-4xl border px-2 py-0.5 text-xs font-medium has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 [&amp;>svg]:size-3! focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive group/badge inline-flex w-fit shrink-0 items-center justify-center overflow-hidden whitespace-nowrap transition-colors focus-visible:ring-[3px] [&amp;>svg]:pointer-events-none border-border text-foreground [a]:hover:bg-muted [a]:hover:text-muted-foreground" style="color: #64748b; border-color: #64748b;"><!---->open-source<!----><!----></span><!----><!----></div><!----></div><!----></a><!--]--></div></div></section> <footer class="border-t border-slate-800 py-8 px-4"><div class="container mx-auto text-center text-slate-500"><p>© 2026 vincents.ai - All rights reserved</p></div></footer><!--]--></div>
   </body>
 </html>
