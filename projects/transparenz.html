@@ -7,15 +7,124 @@
     <title>Transparenz - vincents.ai</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-      body { margin: 0; font-family: system-ui, -apple-system, sans-serif; }
-    </style>
+    /* Base reset */
+    body { margin: 0; font-family: system-ui, -apple-system, sans-serif; }
+
+    /* JS progressive enhancement */
+    .js-enabled .js-only { display: inline; }
+    .js-disabled .no-js-only { display: inline; }
+    .project-details { display: none; }
+    .js-enabled .project-details.expanded { display: block; }
+
+    /* Card styles */
+    .project-card {
+      background-color: #0f172a;
+      border-radius: 0.75rem;
+      padding: 1.5rem;
+      border-top: 4px solid #4f46e5;
+      transition: transform 200ms, box-shadow 200ms;
+    }
+    .project-card:hover {
+      transform: translateY(-0.25rem);
+      box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1);
+    }
+    .card-logo {
+      width: 5rem;
+      height: 5rem;
+      margin-bottom: 1rem;
+    }
+    .card-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    .card-tagline {
+      font-size: 0.875rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: #94a3b8;
+      margin-bottom: 0.5rem;
+    }
+    .card-desc {
+      color: #cbd5e1;
+      font-size: 0.875rem;
+      margin-bottom: 1rem;
+    }
+    .card-badge {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border: 1px solid currentColor;
+    }
+
+    /* Detail page */
+    .detail-panel {
+      background-color: #0f172a;
+      border-radius: 0.75rem;
+      padding: 2rem;
+      border-top: 4px solid #4f46e5;
+    }
+    .detail-title {
+      font-size: 2.25rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+    .detail-tagline {
+      font-size: 1.125rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: #94a3b8;
+      margin-bottom: 1.5rem;
+    }
+    .detail-desc {
+      color: #cbd5e1;
+      font-size: 1.125rem;
+      margin-bottom: 2rem;
+    }
+    .detail-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #64748b;
+      margin-bottom: 0.5rem;
+    }
+    .detail-value {
+      color: #cbd5e1;
+    }
+    .detail-cta {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      background-color: #fb923c;
+      color: #020617;
+      font-weight: 700;
+      border-radius: 0.5rem;
+      text-decoration: none;
+    }
+    .detail-cta:hover {
+      background-color: #f97316;
+    }
+    .color-swatch {
+      width: 1.5rem;
+      height: 1.5rem;
+      border-radius: 0.25rem;
+      display: inline-block;
+      vertical-align: middle;
+      margin-right: 0.5rem;
+    }
+</style>
   </head>
   <body class="min-h-screen bg-slate-950 text-white">
     <header class="bg-gradient-to-r from-slate-900 to-slate-950 py-20 px-4">
       <div class="container mx-auto text-center">
         <div class="flex justify-center mb-6">
           <svg width="200" height="80" viewBox="0 0 200 80">
-            <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" 
+            <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle"
                   font-size="32" font-weight="bold" fill="url(#grad1)">vincents.ai</text>
             <defs>
               <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -31,44 +140,39 @@
         <p class="text-xl text-slate-400 mt-4">Tooling for the agentic age</p>
       </div>
     </header>
-    
+
     <section class="py-16 px-4">
       <div class="container mx-auto max-w-4xl">
         <a href="/" class="text-slate-400 hover:text-white mb-8 inline-block">&larr; Back to projects</a>
-        
-        <div style="background-color: #0f172a; border-radius: 0.75rem; padding: 2rem; border-top: 4px solid #f59e0b;">
-          <h2 style="font-size: 2.25rem; font-weight: 700; margin-bottom: 1rem; color: #f59e0b;">Transparenz</h2>
-          <p style="font-size: 1.125rem; font-weight: 600; letter-spacing: 0.05em; 
-                    text-transform: uppercase; color: #94a3b8; margin-bottom: 1.5rem;">EU CRA COMPLIANCE BACKEND</p>
-          <p style="color: #cbd5e1; font-size: 1.125rem; margin-bottom: 2rem;">EU CRA compliance backend for software transparency and security</p>
-          
+
+        <div class="detail-panel" style="border-top-color: {color};">
+          <h2 class="detail-title" style="color: {color};">{title}</h2>
+          <p class="detail-tagline">{tagline}</p>
+          <p class="detail-desc">{desc}</p>
+
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
             <div>
-              <p style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: #64748b; margin-bottom: 0.5rem;">Category</p>
-              <p style="color: #cbd5e1;">compliance</p>
+              <p class="detail-label">Category</p>
+              <p class="detail-value">{cat}</p>
             </div>
             <div>
-              <p style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: #64748b; margin-bottom: 0.5rem;">Status</p>
-              <p style="color: #cbd5e1;">Open Source</p>
+              <p class="detail-label">Status</p>
+              <p class="detail-value">{status}</p>
             </div>
             <div>
-              <p style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: #64748b; margin-bottom: 0.5rem;">Colour</p>
-              <div style="display: flex; align-items: center; gap: 0.5rem;">
-                <div style="width: 1.5rem; height: 1.5rem; border-radius: 0.25rem; background-color: #f59e0b;"></div>
-                <span style="color: #cbd5e1;">#f59e0b</span>
+              <p class="detail-label">Colour</p>
+              <div>
+                <span class="color-swatch" style="background-color: {color};"></span>
+                <span class="detail-value">{color}</span>
               </div>
             </div>
-            <div>
-              <p style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: #64748b; margin-bottom: 0.5rem;">Repository</p>
-              <a href="https://github.com/vincents-ai/transparenz" target="_blank" rel="noopener noreferrer" style="color: #fb923c; text-decoration: none;" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">https://github.com/vincents-ai/transparenz</a>
-            </div>
           </div>
-          
-          <a href="https://github.com/vincents-ai/transparenz" target="_blank" rel="noopener noreferrer" style="display: inline-block; padding: 0.75rem 1.5rem; background-color: #fb923c; color: #020617; font-weight: 700; border-radius: 0.5rem; text-decoration: none;" onmouseover="this.style.backgroundColor='#f97316'" onmouseout="this.style.backgroundColor='#fb923c'">View on GitHub &rarr;</a>
+
+          <a href="{url}" target="_blank" rel="noopener noreferrer" class="detail-cta">View on GitHub &rarr;</a>
         </div>
       </div>
     </section>
-    
+
     <footer class="border-t border-slate-800 py-8 px-4">
       <div class="container mx-auto text-center text-slate-500">
         <p>&copy; 2026 vincents.ai - All rights reserved</p>
