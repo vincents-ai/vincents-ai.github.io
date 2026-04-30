@@ -1607,28 +1607,6 @@ var data_default = {
 			"title": "Enrichment Engine"
 		},
 		{
-			"category": "tooling",
-			"color": {
-				"hex": "#64748b",
-				"name": "Slate"
-			},
-			"colorKey": "tooling",
-			"description": "Standardised Nix modules for vincents-ai projects. Reproducible builds, dev shells, deployment across the ecosystem.",
-			"githubUrl": "https://github.com/vincents-ai/nix-modules",
-			"id": "nix-modules",
-			"localPath": "/home/shift/code/vincents-ai/nix-modules",
-			"logoPaths": {
-				"bannerJpg": "/assets/banners/vincents/jpg/nix-modules.jpg",
-				"bannerPng": "/assets/banners/vincents/png/nix-modules.png",
-				"bannerSvg": "/assets/banners/vincents/svg/nix-modules.svg",
-				"jpg": "/assets/icons/vincents/jpg/nix-modules.jpg",
-				"png": "/assets/icons/vincents/png/nix-modules.png",
-				"svg": "/assets/icons/vincents/svg/nix-modules.svg"
-			},
-			"tagline": "CENTRALISED NIX MODULES",
-			"title": "Nix Modules"
-		},
-		{
 			"category": "execution",
 			"color": {
 				"hex": "#06b6d4",
